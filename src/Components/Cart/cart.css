@@ -1,0 +1,184 @@
+.content-inner {
+    padding-top: 100px;
+    padding-bottom: 70px;
+}
+
+@media only screen and (max-width: 1480px) {
+    .content-inner {
+        padding-top: 70px;
+        padding-bottom: 40px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .content-inner {
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table> :not(:first-child) {
+    border-top: 1px solid #dee2e6;
+}
+
+.check-tbl {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    vertical-align: middle;
+}
+
+.check-tbl thead th {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px 15px;
+    color: #fff !important;
+    background: #1a1668;
+}
+
+.check-tbl tbody td {
+    padding: 15px;
+    font-weight: 500;
+    color: #1a1668;
+}
+
+.check-tbl tbody td img {
+    width: 100px;
+    border-radius: 6px;
+}
+
+.check-tbl .product-item-close {
+    text-align: right;
+}
+
+.check-tbl .product-item-close a {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    background: #ff1e6f;
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+}
+
+.product-item-img {
+    width: 100px;
+    height: 100px;
+}
+
+.btn-quantity.style-1 .bootstrap-touchspin {
+    width: 150px;
+    min-width: 150px;
+    position: relative;
+    height: 48px;
+}
+
+.btn-quantity.style-1 input {
+    width: auto;
+    padding: 0;
+    text-align: center;
+    z-index: 1;
+    background-color: transparent;
+    border: 2px solid #eee;
+
+}
+
+.btn-quantity.style-1 .input-group-btn-vertical {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding: 2px;
+    margin-left: 0 !important;
+}
+
+.btn-quantity.style-1 .input-group-btn-vertical .btn {
+    padding: 0px;
+    min-width: 48px;
+    height: 100%;
+    border: 0;
+    justify-content: center;
+    z-index: 1;
+    border-radius: 0;
+    background-color: #eee;
+    position: relative;
+}
+
+.product-item-quantity i {
+    color: #8F8F8F;
+}
+
+input:focus {
+    border-color: #EAA451 !important;
+    box-shadow: unset !important;
+}
+
+button:focus {
+    border-color: #EAA451 !important;
+    box-shadow: unset !important;
+}
+
+/***wedget**/
+.widget {
+    margin-bottom: 45px;
+}
+
+.widget:last-child {
+    margin-bottom: 0;
+}
+
+.widget .widget-title {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.widget .widget-title:before {
+    content: "";
+    height: 100%;
+    width: 5px;
+    border-radius: 10px;
+    background-color: #EAA451;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.shop-form .form-group {
+    margin-bottom: 25px;
+
+}
+
+.shop-form .form-group .bootstrap-select {
+    width: 100% !important;
+}
+
+.shop-form .form-group .bootstrap-select .btn {
+    font-weight: 300;
+    color: #000;
+}
+
+.shop-form .form-group .bootstrap-select .btn-light {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.shop-form .form-group .bootstrap-select .btn-light:hover {
+    background-color: rgb(245, 245, 245);
+    border-color: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.shop-form .form-group .bootstrap-select .btn-light:focus {
+    outline: 0 !important;
+}
+
+

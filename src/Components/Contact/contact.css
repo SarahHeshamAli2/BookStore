@@ -1,0 +1,227 @@
+.dz-bnr-inr h1,
+.dz-bnr-inr .h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.contact-wraper1 {
+    margin-bottom: 60px;
+    position: relative;
+    background-position: -260px center;
+    background-size: cover;
+    background-image: url('/src/images/bg2.jpg');
+}
+
+.contact-wraper1 .contact-info {
+    padding: 50px 30px;
+}
+
+.contact-wraper1 .contact-area1 {
+    margin-top: -180px;
+    margin-bottom: -100px;
+}
+
+.contact-wraper1 .contact-info:before {
+    content: "";
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    background: linear-gradient(to right, rgba(26, 22, 104, 0.5) 0%, rgb(26, 22, 104) 100%);
+}
+
+.contact-wraper1 .contact-info:after {
+    content: "";
+    height: 100%;
+    width: 50%;
+    background-color: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+}
+
+@media only screen and (max-width: 991px) {
+    .contact-wraper1 .contact-info {
+        padding: 50px 0px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .contact-wraper1 {
+        background-position: center;
+        background-size: cover;
+        margin-bottom: 0;
+    }
+
+    .contact-wraper1 .contact-info:after {
+        content: none;
+    }
+
+    .contact-wraper1 .contact-info:before {
+        height: 100%;
+        width: 100%;
+    }
+
+    .contact-area1 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .contact-info {
+        padding: 50px 0px 20px;
+    }
+}
+
+.contact-area1 {
+    position: relative;
+    padding: 50px;
+    background: #fff;
+    box-shadow: 0px 3px 29px 0px rgba(0, 0, 0, 0.07);
+
+}
+
+.contact-area1 h3 {
+    font-size: 2.15rem;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 65px) {
+    .contact-area1 {
+        padding: 30px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    form .g-recaptcha {
+        transform: scale(0.7);
+        -moz-transform: scale(0.7);
+        -o-transform: scale(0.7);
+        -webkit-transform: scale(0.7);
+        transform-origin: 0 0;
+        -moz-transform-origin: 0 0;
+        -o-transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+    }
+}
+
+.map-iframe {
+    height: 450px;
+}
+
+@media only screen and (max-width: 575px) {
+    .map-iframe {
+        height: 250px;
+    }
+}
+
+.text-primary {
+    color: #EAA451 !important;
+}
+
+.icon-bx-wraper.left .icon-xl,
+.icon-bx-wraper.left .icon-lg,
+.icon-bx-wraper.left .icon-md,
+.icon-bx-wraper.left .icon-sm,
+.icon-bx-wraper.left .icon-xs {
+    float: left;
+    margin-right: 10px;
+    padding-bottom: 20px;
+}
+
+.sub-title {
+    text-transform: uppercase;
+}
+
+.m-md-r0 {
+    margin-right: 0;
+}
+
+.m-r20 {
+    margin-right: 20px;
+}
+
+.form-control {
+
+    height: 48px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: lighter;
+    color: #1a1668;
+    transition: all 0.3s ease-in-out;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    appearance: none;
+}
+
+.form-control::placeholder {
+    font-weight: 200;
+    font-size: 16px;
+    color: #1a1668;
+}
+
+input[type="hidden" i] {
+    appearance: none;
+    background-color: initial;
+    cursor: default;
+    display: none !important;
+    padding: initial;
+    border: initial;
+    border-color: initial;
+    border-radius: initial;
+}
+
+.dz-form .radius-no .form-control {
+    border-radius: 0;
+}
+
+.dz-form textarea {
+    height: 185px;
+    padding: 15px ​20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+button:not(:disabled),
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled) {
+    cursor: pointer;
+}
+
+.alert-danger {
+    color: #991243;
+    background-color: #ffd2e2;
+    border-color: #ffbcd4;
+}
+
+.alert {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.375rem;
+}
+
+.alert-success {
+    color: #015f47;
+    background-color: #ccece4;
+    border-color: #b3e2d6;
+}
+
+.alert-success .alert-link {
+    color: #014c39;
+}
