@@ -75,3 +75,7 @@ height: 40px;
 width: 40px;
 line-height: 40px;
 }}
+.dropdown-header,
+.profile-info  span {
+    color: #EAA451 !important;
+}

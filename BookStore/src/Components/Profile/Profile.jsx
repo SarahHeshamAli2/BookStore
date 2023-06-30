@@ -22,8 +22,7 @@ export default function Profile() {
 											</div>
 											<div className="account-title">
 												<div className="">
-													<h4 className="m-b5 "><Link to="#" className='text-decoration-none ss'>{userName}</Link></h4>
-													<p className="m-b0"><Link to="#" className='text-decoration-none sd'>Web developer</Link></p>
+													<h2 className="m-b5 "><Link to="#" className='text-decoration-none ss'>{userName}</Link></h2>
 												</div>
 											</div>
 										</div>

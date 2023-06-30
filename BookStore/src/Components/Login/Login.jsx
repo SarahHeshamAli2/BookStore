@@ -33,8 +33,9 @@ export default function Login({getUserData}) {
           setTimeout(() => {
             $('.successmsg').fadeOut(1000)
           }, 200);
-          navigate('/profile')
+          
         });
+        navigate('/profile')
       }
 
 

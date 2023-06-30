@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { RouterProvider, createBrowserRouter} from 'react-router-dom';
 import Layout from './Components/Layout/Layout'
 import Home from './Components/Home/Home'
@@ -14,19 +14,40 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PopUpProvider from './Components/Context/PopUpContext';
 import jwtDecode from 'jwt-decode';
+import ProfilePicture from './Components/ProfilePicture/ProfilePicture';
 
 
 export default function App() {
+  
+  
 
+  const [currentUser, setCurrentUser] = useState(null)
 
   function getUserData() {
 
     const userToken = localStorage.getItem("userToken")
     const userData = jwtDecode(userToken)
+    setCurrentUser(userData)
 
   }
+  function logOut() {
+    localStorage.removeItem("userToken")
+    setCurrentUser(null)
+
+  }
+  useEffect(function(){
+
+
+  
+    if(localStorage.getItem("userToken") !=null && currentUser == null) {
+    
+        getUserData()
+    }
+    
+        },[])
+  
   const router = createBrowserRouter([
-    {path:'' ,element:<PopUpProvider><Layout getUserData={getUserData}/></PopUpProvider> ,children:[
+    {path:'' ,element:<PopUpProvider><Layout logOut={logOut} currentUser={currentUser} getUserData={getUserData}/></PopUpProvider> ,children:[
       {path:'',element:<Home />},    
     {path:'home',element:<Home />,children:[
       {path:'Login', element:<PopUpProvider><Login /></PopUpProvider>}
@@ -39,6 +60,7 @@ export default function App() {
     {path:'Products',element:<Products />},
 
     {path:'profile',element:<Profile />},
+    {path:'trial',element:<ProfilePicture />},
     {path:'Signup',element: <PopUpProvider><Signup /></PopUpProvider>},
 
     {path:'Showbook',element:<Showbook />},
