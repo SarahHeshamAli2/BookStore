@@ -1,11 +1,12 @@
 import React from 'react'
 import Navbar from '../Navbar/Navbar'
 import ReactDOM from 'react-dom';
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 import './Layout.css'
 import $ from 'jquery';
 
-export default function Layout({getUserData}) {
+export default function Layout({getUserData,currentUser,logOut}) {
+  const navigate = useNavigate()
   function scroltop(){
     $('.scroltop').on('click',(function() {
       let tp=$(window).scrollTop()
@@ -23,7 +24,16 @@ export default function Layout({getUserData}) {
           $(".scroltop").fadeOut(1000);
       }
   });
+
   }
+
+  function logOutAndNavToHome() {
+
+    logOut()
+    navigate("/home")
+
+  }
+
   return <>
     <header className="site-header header style-1">
   
@@ -32,7 +42,7 @@ export default function Layout({getUserData}) {
         <div className="logo-header logo-dark ms-md-5">
           <Link to="/home"><img src={require('../../images/logo1.png')} alt="logo" /></Link>
         </div>
-
+    {currentUser ? 
         <div className="extra-nav">
           <div className="extra-cell">
             <ul className="navbar-nav header-right">
@@ -42,7 +52,7 @@ export default function Layout({getUserData}) {
                   <img src={require('../../images/blank-profile-picture-973460_128.jpg')} alt="/" />
                   <div className="profile-info">
                     <h6 className="title">{localStorage.getItem("userName")}</h6>
-                    <span>{localStorage.getItem("userEmail")}</span>
+                    <span className='copyright-text'>{localStorage.getItem("userEmail")}</span>
                   </div>
                 </Link>
                 <div className="dropdown-menu py-0 dropdown-menu-end">
@@ -76,18 +86,18 @@ export default function Layout({getUserData}) {
                     </Link>
                   </div>
                   <div className="dropdown-footer">
-                    <Link className="btn btn-primary w-100 btnhover btn-sm" to="/home">Log Out</Link>
+                    <Link onClick={logOutAndNavToHome} className="btn btn-primary w-100 btnhover btn-sm" to="/home">Log Out</Link>
                   </div>
                 </div>
               </li>
             </ul>
           </div>
-        </div>
+        </div> : ""}
       </div>
     </div>
   </header>
  
-  <Navbar getUserData={getUserData}/>
+  <Navbar getUserData={getUserData} logOutAndNavToHome={logOutAndNavToHome} currentUser={currentUser}/>
   <Outlet />
 
   <div className="footer-bottom">
