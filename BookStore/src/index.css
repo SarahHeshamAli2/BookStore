@@ -709,39 +709,12 @@ nav .dropdown-item:focus{
   align-items: center;
 }
 
-/* .image-upload-label {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  cursor: pointer;
-}
 
-.image-upload-input {
-  display: none;
+a
+ {
+   text-decoration: none;
+list-style: none;
 }
-
-.image-upload-button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 0.8rem 1.2rem;
-  margin-top: 1rem;
-  cursor: pointer;
-  border-radius: 5px;
+li{
+  list-style: none;
 }
-
-.image-upload-button:hover {
-  background-color: #3e8e41;
-}
-
-.img-display-before {
-  height: 600px;
-  width: 600px;
-  margin-left: 35px;
-}
-
-.img-display-after {
-  height: 300px;
-  width: 300px;
-  border-radius: 50%;
-} */

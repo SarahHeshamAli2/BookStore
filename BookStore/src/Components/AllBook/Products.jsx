@@ -1,39 +1,53 @@
+//Products component
 import axios from "axios"
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
-import LoadingScreen from '../LoadingScreen/LoadingScreen'
-export default function Products() {
-  const [allProducts, setAllProducts] = useState(null);
-  async function getAllPrducts() {
-    try {const { data } = await axios.get('https://booklandstore.onrender.com/api/v1/products')
-      setAllProducts(data.data) 
-    console.log(data.data);}
-    catch (e) {
-      console.log("Error: ", e);
-    }
-  }
-  useEffect(function () {
-    getAllPrducts()
-  }, []);
-  return <>
-    {allProducts ? <div className="container">
-      <div className="row">
-        {allProducts.map(function (product, idx) {
-          return <div key={idx} className="col-md-3">
-            <div className="item">
-              <img className="w-100" src={product.imageCover} alt={product.productName} />
-              <h3 className="h6 fw-bolder">{product.productName}</h3>
-              <p className="text-muted ">{product.price}$</p>
-              <span>
-                <i className="fas fa-star text-center"></i>{product.ratingsAverage}
-              </span>
-              <br />
-              <Link className="btn  btnhover btnhover2" to=""><button><i className="fa-solid fa-cart-shopping"></i>Add to cart</button></Link>
-            </div>
-          </div>
-        })}
-      </div>
-    </div> : <LoadingScreen />}
+import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import './Products.css'
+export default function Products(){
 
-  </>
+    const [allProducts , setAllProducts]=useState(null);
+
+    async function getAllPrducts(){
+
+       try{
+        const {data} =await axios.get('https://booklandstore.onrender.com/api/v1/products')
+       
+        setAllProducts(data.data)
+    }
+       catch(e){
+        console.log("Error: ",e);
+       }
+    }
+
+    useEffect(function(){
+        getAllPrducts()
+    },[]);
+
+    return<>
+     {allProducts? <div className="container">
+      <div className="row">
+      <h2 className="text-center my-5">Books At Bookland</h2>
+        {allProducts.map(function(product, idx){
+            return <div key={ idx } className="col-md-3 pt-5  mb-5">
+              <Link to= {`/Showbook/${product._id}`}>
+            <div className="item">
+            {/* <img className="w-100" src={product.imageCover} alt={product.productName} /> */}
+                <img src={product.imageCover} alt={product.productName} />
+                 <h3 className="h6 fw-bolder text-center pt-3">{product.productName}</h3>
+                    <p className=" text-center text-muted ">{product.price}$</p>
+                     <span className=" text-center">
+                      <i className="fas fa-star"></i>{product.ratingsAverage}
+                      </span>
+                      <br/>
+                     <div className="text-center"> 
+                     <Link className="btn btnhover btnhover2" to=""><button className="addBtn p-2 border rounded-2"><i className="fa-solid fa-cart-shopping"></i>   Add to cart</button></Link>
+                     </div>
+            </div>
+            </Link>
+        </div>})}
+    </div>
+</div> :<LoadingScreen/> } 
+ 
+</>
 }

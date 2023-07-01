@@ -1,30 +1,47 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import './bookshow.css'
+import axios from "axios"
+import LoadingScreen from '../LoadingScreen/LoadingScreen';
 export default function Showbook() {
+
+  const{id}= useParams();
+ const[productDetails,setProductDetails] = useState(null);
+
+async function getProudctDetails(){
+  try {
+    const {data}= await axios.get(`https://booklandstore.onrender.com/api/v1/products/${id}`)
+    setProductDetails(data.data)
+console.log(data);
+
+  } catch (error) {
+    console.log('Error :',error);
+    
+  }
+}
+useEffect(function(){
+  getProudctDetails()
+
+
+},[])
   return <>
-    <div className="page-content bg-grey">
+  {productDetails? <div className="page-content bg-grey">
       <section className="content-inner-1">
         <div className="container">
           <div className="row book-grid-row style-4 m-b60">
             <div className="col">
               <div className="dz-box">
                 <div className="dz-media">
-                  <img src={require("../../images/book16.png")} alt="book" />
+                  <img src={productDetails.imageCover} alt={productDetails.productName} />
                 </div>
                 <div className="dz-content">
                   <div className="dz-header">
-                    <h3 className="title">Think and Grow Rich</h3>
-                    <div className="shop-item-rating">
-                      <ul className="dz-rating text-end ">
-                        <li><i className="fa-solid fa-star text-yellow text-decoration-none " ></i></li>
-                        <li><i className="fa-solid fa-star text-yellow"></i></li>
-                        <li><i className="fa-solid fa-star text-yellow"></i></li>
-                        <li><i className="fa-solid fa-star text-yellow"></i></li>
-                        <li><i className="fa-solid fa-star text-muted"></i></li>
-                        <li>
-                          <h6 className="m-b0">4.0</h6>
-                        </li>
+                    <h3 className="title">{productDetails.productName}</h3>
+                    <div className="shop-item-rating ">
+                      <ul className="dz-rating ">
+                      <span className=" text-center ms-2 text-yellow">
+                      <i className="fas fa-star "></i>{productDetails.ratingsAverage}
+                      </span>
                       </ul>
                     </div>
                   </div>
@@ -34,7 +51,7 @@ export default function Showbook() {
                         <li>
                           <div className="writer-info text-decoration-none">
                             <img src={require("../../images/profile2.jpg")} alt="book" />
-                            <div><span>Auther</span>Napoleon Rich</div>
+                            <div><span>Auther</span>{productDetails.authorName}</div>
                           </div>
                         </li>
                       </ul>
@@ -42,38 +59,40 @@ export default function Showbook() {
                   </div>
                   <div className="tab-pane show">
                     <table className="table border book-overview">
+                    <thead>
                       <tr>
                         <th>Publisher</th>
-                        <td>Wepress Inc.</td>
+                        <td>{productDetails.publisher}</td>
                       </tr>
 
                       <tr>
                         <th>Language</th>
-                        <td>English</td>
+                        <td>{productDetails.language}</td>
                       </tr>
                       <tr>
                         <th>Pages</th>
-                        <td>520</td>
+                        <td>{productDetails.pages}</td>
                       </tr>
 
                       <tr>
                         <th>Date Published</th>
-                        <td>August 10th 2019</td>
+                        <td>{productDetails.dateOfPublished}</td>
                       </tr>
 
                       <tr>
                         <th>Number of book sold</th>
-                        <td>7</td>
+                        <td>{productDetails.sold}</td>
                       </tr>
+                      </thead>
                     </table>
                   </div>
                   <div className="book-footer">
                     <div className="price">
-                      <h5>$54.78</h5>
+                      <h5>{productDetails.price}$</h5>
                     </div>
                     <div className="product-num">
                       <Link to="/cart" className="btn btn-primary btnhover btnhover2"><i
-                        className="flaticon-shopping-cart-1"></i>
+                        className="flaticon-shopping-cart-1  fa-solid fa-cart-shopping"></i>
                         <span>Add to cart</span></Link>
                     </div>
                   </div>
@@ -105,17 +124,13 @@ export default function Showbook() {
                       <tbody>
                         <tr>
                           <th>Name</th>
-                          <td>Napoleon Rich</td>
+                          <td>{productDetails.authorName}</td>
                         </tr>
 
                         <tr>
                           <th>history of his writing</th>
                           <td>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Sint repellat error et a, rem illo
-                            accusantium laborum possimus perferendis ut
-                            aliquid. Cupiditate repellendus, repellat aperiam
-                            voluptatum fugiat nesciunt est fugit.
+                       {productDetails.aboutAuthor}
                           </td>
                         </tr>
 
@@ -411,59 +426,10 @@ export default function Showbook() {
                   </div>
                   <div id="developement-2" className="tab-pane">
                     <div className="row">
-                      <div className="col-md-12 topic">
+                      <div className="col-md-12 topic ">
                         <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0"
                           data-bs-smooth-scroll="true" className="scrollspy-example" tabIndex="0">
-                          <h4 id="simple-list-item-1">Topic 1</h4>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur
-                            adipisicing elit. Laborum incidunt nam sunt
-                            quisquam, unde labore nobis eveniet nisi
-                            architecto rerufg fsfdsf fdds dddda iure impedit
-                            molestias aliquid at error aspernatur ab!
-                            <Link to="#">see More
-                              <i className="fa-solid fa-angles-right"></i></Link>
-                          </p>
-
-                          <h4 id="simple-list-item-2">Topic 2</h4>
-                          <p>
-                            Lorem, ipsum dolor sit amet consectetur
-                            adipisicing elit. Esse, aspernatur laboriosam. Ea
-                            tempora ducimus omnis, nisi consequatur amet
-                            provident corrupti repudiandae minima ipsa fugit
-                            vitae perspiciatis soluta iure expedita
-                            reiciendis.
-                            <Link to="#">
-                              see More <i className="fa-solid fa-angles-right"></i></Link>
-                          </p>
-                          <h4 id="simple-list-item-3">Topic 3</h4>
-                          <p>
-                            Lorem ipsum dolor, sit amet consectetur
-                            adipisicing elit. Odio repellendus iste dolore
-                            fugit possimus voluptatibus harum facilis
-                            obcaecati tempora. Voluptate beatae at ipsam
-                            nostrum ipsum delectus enim quae aspernatur
-                            deleniti?<Link to="#">
-                              see More <i className="fa-solid fa-angles-right"></i></Link>
-                          </p>
-                          <h4 id="simple-list-item-4">Topic 4</h4>
-                          <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Rem ipsa nihil asperiores iusto amet est in,
-                            maiores voluptates dolore! Fugiat recusandae animi
-                            repudiandae veniam dignissimos! Aliquam veritatis
-                            labore consequatur unde.<Link to="#">
-                              see More <i className="fa-solid fa-angles-right"></i></Link>
-                          </p>
-                          <h4 id="simple-list-item-5">Topic 5</h4>
-                          <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Odit dolorem iste, sit enim autem inventore
-                            officiis aliquid libero quo iure incidunt
-                            doloremque ad voluptate magni explicabo tempore
-                            debitis illum. Neque!<Link to="#">
-                              see More <i className="fa-solid fa-angles-right"></i></Link>
-                          </p>
+                        {productDetails.tableOfContent}
                         </div>
                       </div>
                     </div>
@@ -471,25 +437,9 @@ export default function Showbook() {
                   <div id="developement-3" className="tab-pane">
                     <div className="row">
                       <div className="col-md-12 topic">
-                        <h4 id="simple-list-item-1">Chapter 1</h4>
+                        <h4 id="simple-list-item-1">Sample Of Chapter</h4>
                         <p>
-                          LIt was one of the most searing images of the
-                          twentieth century: two young boys, two princes,
-                          walking behind their mother’s coffin as the world
-                          watched in sorrowand horror. As Diana, Princess of
-                          Wales, was laid to rest, billions wondered what the
-                          princes must be thinking and feeling and how their
-                          lives would play out from that point on. For Harry,
-                          this is that story at last. With its raw,
-                          unflinching honesty, Spare is a landmark publication
-                          full of insight, revelation, self-examination, and
-                          hard-won wisdom about the eternal power of love over
-                          grief. Lorem ipsum dolor sit amet, consectetur
-                          adipisicing elit. Sit sunt ad ab voluptatem. Quas,
-                          quibusdam quasi, aliquam incidunt voluptas itaque,
-                          quam dolorum ipsam praesentium doloremque eaque eos
-                          libero at fuga.
-                          <Link to="#">see More <i className="fa-solid fa-angles-right"></i></Link>
+                { productDetails.sampleOfChapter}
                         </p>
                       </div>
                     </div>
@@ -500,6 +450,7 @@ export default function Showbook() {
           </div>
         </div>
       </section>
-    </div>
+    </div>: <LoadingScreen />}
+   
   </>
 }

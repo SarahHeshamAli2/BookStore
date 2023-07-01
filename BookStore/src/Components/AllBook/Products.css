@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap');
+
+.container .row h2{
+    color: #1a1668;
+    font-family: 'Agdasima', sans-serif;
+    font-size: 4rem;
+  }
+  .item p{
+   /* color : black !important;*/
+    font-size: 1.5rem !important;
+  }
+  .col-md-3 img{
+    height: 250px;
+    object-fit: cover;
+  
+  }
+  .item img{
+    width: 100%;
+    border-radius: 5px;
+    height: 300px;
+  }
+  .item h3{
+    color: #1a1668;
+    font-weight: 500;
+    line-height: 1.4;
+    font-size: 18px;
+    /* margin-bottom: 12px; */
+  }
+  .item span{
+    color: #EAA451;
+    display: block;
+    /* font-family: var(--font-family-title); */
+    font-family: poppins;
+    font-size: 18px;
+    font-weight: 500;
+    /* margin-bottom: 12px; */
+  }
+  .item .addBtn{
+    background-color:#1a1668;
+    color:#fff;
+  }

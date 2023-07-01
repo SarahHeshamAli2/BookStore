@@ -41,7 +41,7 @@ export default function App() {
     {path:'profile',element:<Profile />},
     {path:'Signup',element: <PopUpProvider><Signup /></PopUpProvider>},
 
-    {path:'Showbook',element:<Showbook />},
+    {path:'Showbook/:id',element:<Showbook />},
       {path:'*',element:<h2>Error404</h2>}]}  ])
   return<>
   <ToastContainer/>

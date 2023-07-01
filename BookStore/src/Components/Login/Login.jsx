@@ -104,7 +104,7 @@ export default function Login({getUserData}) {
           </div>
 
         </form>
-        <div className="dropdown-item mb-3 px-4 " to="/Signup">if You don't have an account with us, <a onClick={showSignUpPopUp} className='cursor-pointer'>SignUp</a></div>
+        <div className="dropdown-item mb-3 px-4 " to="/Signup">if You don't have an account with us, <Link onClick={showSignUpPopUp} className='cursor-pointer'>SignUp</Link></div>
         <Link className="dropdown-item mb-3 px-4 " to="/Contact">Forgot password?</Link>
       </div>
     </div>

@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
 import $ from 'jquery';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+
 import React, { useContext, useRef, useState } from 'react';
 import './Signup.css'
 import { myPopUp } from '../Context/PopUpContext';
@@ -112,7 +113,7 @@ export default function Signup() {
             {loading ? <button className='btn  w-25 btn-primary'><i className="fa-solid fa-spinner fa-spin "></i></button> : <button name="submit" type="submit" value="submit" className="btn  w-25 btn-primary btnhover">SIGN UP</button>
             }
           </div>
-          Already have an account ? <a className='cursor-pointer' onClick={showPopUp}>Sign In</a>
+          Already have an account ? <Link className='cursor-pointer' onClick={showPopUp}>Sign In</Link>
 
         </form>
       </div>
