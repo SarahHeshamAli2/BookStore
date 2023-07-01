@@ -1,10 +1,12 @@
 //Products component
 import axios from "axios"
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import './Products.css'
+import { cartContext } from "../Context/CartContext";
 export default function Products(){
+    const {addToCart} = useContext(cartContext)
 
     const [allProducts , setAllProducts]=useState(null);
 
@@ -30,24 +32,26 @@ export default function Products(){
       <h2 className="text-center my-5">Books At Bookland</h2>
         {allProducts.map(function(product, idx){
             return <div key={ idx } className="col-md-3 pt-5  mb-5">
-              <Link to= {`/Showbook/${product._id}`}>
+              <div>
             <div className="item">
-            {/* <img className="w-100" src={product.imageCover} alt={product.productName} /> */}
+                <Link  to= {`/Showbook/${product._id}`}>
                 <img src={product.imageCover} alt={product.productName} />
                  <h3 className="h6 fw-bolder text-center pt-3">{product.productName}</h3>
                     <p className=" text-center text-muted ">{product.price}$</p>
                      <span className=" text-center">
                       <i className="fas fa-star"></i>{product.ratingsAverage}
                       </span>
+                </Link>
                       <br/>
                      <div className="text-center"> 
-                     <Link className="btn btnhover btnhover2" to=""><button className="addBtn p-2 border rounded-2"><i className="fa-solid fa-cart-shopping"></i>   Add to cart</button></Link>
+                     <div onClick={function(){addToCart(product._id)}} className="btn btnhover btnhover2" to=""><button  className="addBtn p-2 border rounded-2"><i className="fa-solid fa-cart-shopping"></i>   Add to cart</button></div>
                      </div>
             </div>
-            </Link>
+            </div>
         </div>})}
     </div>
 </div> :<LoadingScreen/> } 
  
 </>
 }
+

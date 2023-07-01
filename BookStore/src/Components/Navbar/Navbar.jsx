@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Login from '../Login/Login'
 import Signup from '../Signup/Signup'
+import { cartContext } from '../Context/CartContext'
 
 export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
+  useEffect(()=>{
+    console.log(numberOfCartItems,cartItems);
+
+  },[])
+  const {numberOfCartItems,cartItems} = useContext(cartContext)
   return <>
   
 <div className="modal fade stylish" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -71,16 +77,25 @@ export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
             </li>
 
           </ul>
-          <ul className=' d-flex m-auto'>
+          <ul className=' d-flex m-auto align-items-center'>
             {
               currentUser == null ?  <>          <button type="button" className="btn btn-primary btnhover" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Login
   </button>
             <button type="button" className="btn btn-primary btnhover" data-bs-toggle="modal" data-bs-target="#exampleModal2">
               Sign Up
-  </button></> :        <button onClick={logOutAndNavToHome} type="button" className="btn btn-primary btnhover" >
+  </button></> :       <>
+              <div className="shopIcon w-25">
+              <img src={require("../../images/bag.png")} alt="" className='w-100'  />
+
+              </div>
+  <button onClick={logOutAndNavToHome} type="button" className="btn btn-primary btnhover" >
             Log Out
+              <h6 className='bg-danger text-white'>            {numberOfCartItems != null ? numberOfCartItems : console.log("fady")}
+</h6>
 </button>
+  
+  </>
             }
 
    

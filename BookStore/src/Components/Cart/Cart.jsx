@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import './cart.css'
 import { Link } from 'react-router-dom'
+import { cartContext } from '../Context/CartContext'
 export default function Cart() {
+   
+    const {getCartProds,cartItems,totalCartPrice,updateCartItemsQuantity} = useContext(cartContext)
+    useEffect(()=>{
+        getCartProds()
+    },[])
     return <>
-        <div id="banner">
+    
+        <div id="banner my-5 py-5">
             <div className="dz-bnr-inr overlay-secondary-dark dz-bnr-inr-sm" >
                 <div className="container">
                     <div className="dz-bnr-inr-entry">
@@ -35,167 +42,36 @@ export default function Cart() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    {cartItems?.map((cartItem,ind)=>  <tr key={ind}>
                                         <td className="product-item-img"><img src={require("../../images/book3.jpg")} alt="" /></td>
                                         <td className="product-item-name">Book</td>
                                         <td className="product-item-name">Battle Drive</td>
-                                        <td className="product-item-price">$28.00</td>
+                                        <td className="product-item-price">${Math.round(cartItem.price)}</td>
                                         <td className="product-item-quantity">
                                             <div className="quantity btn-quantity style-1 me-3">
                                                 <div className="input-group bootstrap-touchspin">
                                                     <span className="input-group-addon bootstrap-touchspin-prefix" style={{ display: "none" }}></span>
-                                                    <input id="demo_vertica12" type="text" value="1" name="demo_vertica12" className="form-control" style={{ display: "block" }} />
+                                                    <input id="demo_vertica12" type="number" value={cartItem.quantity} name="demo_vertica12" className="form-control text-center" style={{ display: "block" }} />
                                                     <span className="input-group-addon bootstrap-touchspin-postfix" style={{ display: "none" }}>
                                                     </span>
                                                     <span className="input-group-btn-vertical">
-                                                        <button className="btn btn-default bootstrap-touchspin-up" type="button">
+                                                        <button onClick={function(){updateCartItemsQuantity(cartItem._id,cartItem.quantity+1)}} className="btn btn-default bootstrap-touchspin-up" type="button">
                                                             <i className="fa-solid fa-plus" id="plus"  ></i>
                                                         </button>
-                                                        <button className="btn btn-default bootstrap-touchspin-down" type="button">
+                                                     {cartItem.quantity <=0 ?<button disabled className="btn btn-default bootstrap-touchspin-down" type="button">
                                                             <i className="fa-solid fa-minus" id="minus" ></i>
-                                                        </button>
+                                                        </button> :   <button onClick={function(){updateCartItemsQuantity(cartItem._id,cartItem.quantity-1)}} className="btn btn-default bootstrap-touchspin-down" type="button">
+                                                            <i className="fa-solid fa-minus" id="minus" ></i>
+                                                        </button>}
                                                     </span>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className="product-item-totle">$28.00</td>
+                                        <td className="product-item-totle">${Math.round(totalCartPrice)}</td>
                                         <td className="product-item-close"><Link to="#" className="fa-solid fa-xmark text-white"></Link></td>
-                                    </tr>
-                                    <tr>
-                                        <td className="product-item-img"><img src={require("../../images/book2.jpg")} alt="" /></td>
-                                        <td className="product-item-name">Course</td>
-                                        <td className="product-item-name">Home</td>
-                                        <td className="product-item-price">$28.00</td>
-                                        <td className="product-item-quantity">
-                                            <div className="quantity btn-quantity style-1 me-3">
-                                                <div className="input-group bootstrap-touchspin">
-                                                    <span className="input-group-addon bootstrap-touchspin-prefix" style={{ display: "none" }}></span>
-                                                    <input id="demo_vertica12" type="text" value="1" name="demo_vertica12" className="form-control" style={{ display: "block" }} />
-                                                    <span className="input-group-addon bootstrap-touchspin-postfix" style={{ display: "none" }}>
-                                                    </span>
-                                                    <span className="input-group-btn-vertical">
-                                                        <button className="btn btn-default bootstrap-touchspin-up" type="button">
-                                                            <i className="fa-solid fa-plus" id="plus"  ></i>
-                                                        </button>
-                                                        <button className="btn btn-default bootstrap-touchspin-down" type="button">
-                                                            <i className="fa-solid fa-minus" id="minus" ></i>
-                                                        </button>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td className="product-item-totle">$28.00</td>
-                                        <td className="product-item-close"><Link to="#" className="fa-solid fa-xmark text-white"></Link></td>
-                                    </tr>
-                                    <tr>
-                                        <td className="product-item-img"><img src={require("../../images/book1.jpg")} alt="" /></td>
-                                        <td className="product-item-name">Book</td>
-                                        <td className="product-item-name">Such A Fun Age</td>
-                                        <td className="product-item-price">$28.00</td>
-                                        <td className="product-item-quantity">
-                                            <div className="quantity btn-quantity style-1 me-3">
-                                                <div className="input-group bootstrap-touchspin">
-                                                    <span className="input-group-addon bootstrap-touchspin-prefix" style={{ display: "none" }}></span>
-                                                    <input id="demo_vertica12" type="text" value="1" name="demo_vertica12" className="form-control" style={{ display: "block" }} />
-                                                    <span className="input-group-addon bootstrap-touchspin-postfix" style={{ display: "none" }}>
-                                                    </span>
-                                                    <span className="input-group-btn-vertical">
-                                                        <button className="btn btn-default bootstrap-touchspin-up" type="button">
-                                                            <i className="fa-solid fa-plus" id="plus"  ></i>
-                                                        </button>
-                                                        <button className="btn btn-default bootstrap-touchspin-down" type="button">
-                                                            <i className="fa-solid fa-minus" id="minus" ></i>
-                                                        </button>
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </td>
-                                        <td className="product-item-totle">$28.00</td>
-                                        <td className="product-item-close"><Link to="#" className="fa-solid fa-xmark text-white"></Link></td>
-                                    </tr>
-                                    <tr>
-                                        <td className="product-item-img"><img src={require("../../images/book5.jpg")} alt="" /></td>
-                                        <td className="product-item-name">Course</td>
-                                        <td className="product-item-name">Real Life</td>
-                                        <td className="product-item-price">$28.00</td>
-                                        <td className="product-item-quantity">
-                                            <div className="quantity btn-quantity style-1 me-3">
-                                                <div className="input-group bootstrap-touchspin">
-                                                    <span className="input-group-addon bootstrap-touchspin-prefix" style={{ display: "none" }}></span>
-                                                    <input id="demo_vertica12" type="text" value="1" name="demo_vertica12" className="form-control" style={{ display: "block" }} />
-                                                    <span className="input-group-addon bootstrap-touchspin-postfix" style={{ display: "none" }}>
-                                                    </span>
-                                                    <span className="input-group-btn-vertical">
-                                                        <button className="btn btn-default bootstrap-touchspin-up" type="button">
-                                                            <i className="fa-solid fa-plus" id="plus"  ></i>
-                                                        </button>
-                                                        <button className="btn btn-default bootstrap-touchspin-down" type="button">
-                                                            <i className="fa-solid fa-minus" id="minus" ></i>
-                                                        </button>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td className="product-item-totle">$28.00</td>
-                                        <td className="product-item-close"><Link to="#" className="fa-solid fa-xmark text-white"></Link></td>
-                                    </tr>
-                                    <tr>
-                                        <td className="product-item-img"><img src={require("../../images/book6.jpg")} alt="" /></td>
-                                        <td className="product-item-name">Book</td>
-                                        <td className="product-item-name">Cat Adventure</td>
-                                        <td className="product-item-price">$28.00</td>
-                                        <td className="product-item-quantity">
-                                            <div className="quantity btn-quantity style-1 me-3">
-                                                <div className="input-group bootstrap-touchspin">
-                                                    <span className="input-group-addon bootstrap-touchspin-prefix" style={{ display: "none" }}></span>
-                                                    <input id="demo_vertica12" type="text" value="1" name="demo_vertica12" className="form-control" style={{ display: "block" }} />
-                                                    <span className="input-group-addon bootstrap-touchspin-postfix" style={{ display: "none" }}>
-                                                    </span>
-                                                    <span className="input-group-btn-vertical">
-                                                        <button className="btn btn-default bootstrap-touchspin-up" type="button">
-                                                            <i className="fa-solid fa-plus" id="plus"  ></i>
-                                                        </button>
-                                                        <button className="btn btn-default bootstrap-touchspin-down" type="button">
-                                                            <i className="fa-solid fa-minus" id="minus" ></i>
-                                                        </button>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td className="product-item-totle">$28.00</td>
-                                        <td className="product-item-close"><Link to="#" className="fa-solid fa-xmark text-white"></Link></td>
-                                    </tr>
-                                    <tr>
-                                        <td className="product-item-img"><img src={require("../../images/book4.jpg")} alt="" /></td>
-                                        <td className="product-item-name">Book</td>
-                                        <td className="product-item-name">Take Out Tango</td>
-                                        <td className="product-item-price">$28.00</td>
-                                        <td className="product-item-quantity">
-                                            <div className="quantity btn-quantity style-1 me-3">
-                                                <div className="input-group bootstrap-touchspin">
-                                                    <span className="input-group-addon bootstrap-touchspin-prefix" style={{ display: "none" }}></span>
-                                                    <input id="demo_vertica12" type="text" value="1" name="demo_vertica12" className="form-control"
-                                                        data-bts-min="0" data-bts-max="100"
-
-                                                        style={{ display: "block" }} />
-                                                    <span className="input-group-addon bootstrap-touchspin-postfix" style={{ display: "none" }}>
-                                                    </span>
-                                                    <span className="input-group-btn-vertical">
-                                                        <button className="btn btn-default bootstrap-touchspin-up" type="button">
-                                                            <i className="fa-solid fa-plus" id="plus"  ></i>
-                                                        </button>
-                                                        <button className="btn btn-default bootstrap-touchspin-down" type="button">
-                                                            <i className="fa-solid fa-minus" id="minus" ></i>
-                                                        </button>
-                                                    </span>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td className="product-item-totle">$28.00</td>
-                                        <td className="product-item-close"><Link to="#" className="fa-solid fa-xmark text-white"></Link></td>
-                                    </tr>
+                                    </tr>)}
+                                   
+                    
                                 </tbody>
                             </table>
                         </div>
@@ -213,7 +89,7 @@ export default function Cart() {
 
                                     <tr>
                                         <td>Total</td>
-                                        <td>$506.00</td>
+                                        <td>${Math.round(totalCartPrice)}</td>
                                     </tr>
                                 </tbody>
                             </table>

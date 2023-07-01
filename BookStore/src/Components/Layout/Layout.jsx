@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from '../Navbar/Navbar'
 import ReactDOM from 'react-dom';
 import { Link, Outlet, useNavigate } from 'react-router-dom'
@@ -6,6 +6,8 @@ import './Layout.css'
 import $ from 'jquery';
 
 export default function Layout({getUserData,currentUser,logOut}) {
+
+
   const navigate = useNavigate()
   function scroltop(){
     $('.scroltop').on('click',(function() {

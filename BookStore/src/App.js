@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import PopUpProvider from './Components/Context/PopUpContext';
 import jwtDecode from 'jwt-decode';
 import ProfilePicture from './Components/ProfilePicture/ProfilePicture';
+import CartProvider, { CartContext } from './Components/Context/CartContext';
 
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
     const userToken = localStorage.getItem("userToken")
     const userData = jwtDecode(userToken)
     setCurrentUser(userData)
+    const userId = localStorage.setItem("userId",userData.userId)
 
   }
   function logOut() {
@@ -47,7 +49,7 @@ export default function App() {
         },[])
   
   const router = createBrowserRouter([
-    {path:'' ,element:<PopUpProvider><Layout logOut={logOut} currentUser={currentUser} getUserData={getUserData}/></PopUpProvider> ,children:[
+    {path:'' ,element:<PopUpProvider><CartProvider><Layout logOut={logOut} currentUser={currentUser} getUserData={getUserData}/></CartProvider></PopUpProvider> ,children:[
       {path:'',element:<Home />},    
     {path:'home',element:<Home />,children:[
       {path:'Login', element:<PopUpProvider><Login /></PopUpProvider>}
@@ -56,14 +58,14 @@ export default function App() {
   },
     {path:'about',element:<About/>},
     {path:'contact',element:<Contact/>},
-    {path:'cart',element:<Cart />},
-    {path:'Products',element:<Products />},
+    {path:'cart',element:<CartProvider><Cart /></CartProvider>},
+    {path:'Products',element:<CartProvider><Products /></CartProvider>},
 
     {path:'profile',element:<Profile />},
     {path:'trial',element:<ProfilePicture />},
     {path:'Signup',element: <PopUpProvider><Signup /></PopUpProvider>},
 
-    {path:'Showbook/:id',element:<Showbook />},
+    {path:'Showbook/:id',element:<CartProvider><Showbook /></CartProvider>},
       {path:'*',element:<h2>Error404</h2>}]}  ])
   return<>
   <ToastContainer/>
