@@ -67,7 +67,7 @@ export default function Cart() {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className="product-item-totle">${Math.round(totalCartPrice)}</td>
+                                        <td className="product-item-totle">${Math.round(cartItem.price*cartItem.quantity)}</td>
                                         <td className="product-item-close"><Link to="#" className="fa-solid fa-xmark text-white"></Link></td>
                                     </tr>)}
                                    
