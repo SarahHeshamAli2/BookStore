@@ -1,25 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './bookshow.css'
 import axios from "axios"
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
-import { cartContext } from '../Context/CartContext';
-import $ from "jquery"
 export default function Showbook() {
-  
-  const {addToCart} = useContext(cartContext)
-
 
   const{id}= useParams();
  const[productDetails,setProductDetails] = useState(null);
- const[tableContent,setTableContent] = useState(null);
 
 async function getProudctDetails(){
   try {
     const {data}= await axios.get(`https://booklandstore.onrender.com/api/v1/products/${id}`)
     setProductDetails(data.data)
-console.log(data.data.tableOfContent);
-setTableContent(data.data.tableOfContent)
+console.log(data);
 
   } catch (error) {
     console.log('Error :',error);
@@ -97,10 +90,10 @@ useEffect(function(){
                     <div className="price">
                       <h5>{productDetails.price}$</h5>
                     </div>
-                    <div className="product-num" onClick={function(){addToCart(productDetails._id)}}>
-                      <div className="btn btn-primary btnhover btnhover2"><i
+                    <div className="product-num">
+                      <Link to="/cart" className="btn btn-primary btnhover btnhover2"><i
                         className="flaticon-shopping-cart-1  fa-solid fa-cart-shopping"></i>
-                        <span >Add to cart</span></div>
+                        <span>Add to cart</span></Link>
                     </div>
                   </div>
                 </div>
@@ -113,16 +106,16 @@ useEffect(function(){
               <div className="product-description tabs-site-button">
                 <ul className="nav nav-tabs">
                   <li>
-                    <Link data-bs-toggle="tab" to="#graphic-design-1" className="active">Auther</Link>
+                    <Link data-bs-toggle="tab" to="#graphic-design-1" className="active">Authers</Link>
                   </li>
                   <li>
                     <Link data-bs-toggle="tab" to="#developement-1" className="">Reviews</Link>
                   </li>
                   <li>
-                    <Link  data-bs-toggle="tab" to="#developement-2" className="">Table of content</Link>
+                    <Link data-bs-toggle="tab" to="#developement-2" className="">Table of contants</Link>
                   </li>
                   <li>
-                    <Link data-bs-toggle="tab" to="#developement-3" className="">Sample of chapter</Link>
+                    <Link data-bs-toggle="tab" to="#developement-3" className="">Sample chapter</Link>
                   </li>
                 </ul>
                 <div className="tab-content">
@@ -436,12 +429,7 @@ useEffect(function(){
                       <div className="col-md-12 topic ">
                         <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0"
                           data-bs-smooth-scroll="true" className="scrollspy-example" tabIndex="0">
-                            {tableContent?.map((chap)=>   <h6 className='chapters'>
-                              {chap}
-
-</h6>)}
-                    
-                        
+                        {productDetails.tableOfContent}
                         </div>
                       </div>
                     </div>

@@ -3,13 +3,13 @@ import './cart.css'
 import { Link } from 'react-router-dom'
 import { cartContext } from '../Context/CartContext'
 export default function Cart() {
-   
-    const {getCartProds,cartItems,totalCartPrice,updateCartItemsQuantity} = useContext(cartContext)
-    useEffect(()=>{
+
+    const { getCartProds, cartItems, totalCartPrice, updateCartItemsQuantity } = useContext(cartContext)
+    useEffect(() => {
         getCartProds()
-    },[])
+    }, [])
     return <>
-    
+
         <div id="banner my-5 py-5">
             <div className="dz-bnr-inr overlay-secondary-dark dz-bnr-inr-sm" >
                 <div className="container">
@@ -42,9 +42,9 @@ export default function Cart() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {cartItems?.map((cartItem,ind)=>  <tr key={ind}>
+                                    {cartItems?.map((cartItem, ind) => <tr key={ind}>
                                         <td className="product-item-img"><img src={require("../../images/book3.jpg")} alt="" /></td>
-                                        <td className="product-item-name">Book</td>
+                                        <td className="product-item-">Book</td>
                                         <td className="product-item-name">Battle Drive</td>
                                         <td className="product-item-price">${Math.round(cartItem.price)}</td>
                                         <td className="product-item-quantity">
@@ -55,23 +55,23 @@ export default function Cart() {
                                                     <span className="input-group-addon bootstrap-touchspin-postfix" style={{ display: "none" }}>
                                                     </span>
                                                     <span className="input-group-btn-vertical">
-                                                        <button onClick={function(){updateCartItemsQuantity(cartItem._id,cartItem.quantity+1)}} className="btn btn-default bootstrap-touchspin-up" type="button">
+                                                        <button onClick={function () { updateCartItemsQuantity(cartItem._id, cartItem.quantity + 1) }} className="btn btn-default bootstrap-touchspin-up" type="button">
                                                             <i className="fa-solid fa-plus" id="plus"  ></i>
                                                         </button>
-                                                     {cartItem.quantity <=0 ?<button disabled className="btn btn-default bootstrap-touchspin-down" type="button">
+                                                        {cartItem.quantity <= 1 ? <button disabled className="btn btn-default bootstrap-touchspin-down" type="button">
                                                             <i className="fa-solid fa-minus" id="minus" ></i>
-                                                        </button> :   <button onClick={function(){updateCartItemsQuantity(cartItem._id,cartItem.quantity-1)}} className="btn btn-default bootstrap-touchspin-down" type="button">
+                                                        </button> : <button onClick={function () { updateCartItemsQuantity(cartItem._id, cartItem.quantity - 1) }} className="btn btn-default bootstrap-touchspin-down" type="button">
                                                             <i className="fa-solid fa-minus" id="minus" ></i>
                                                         </button>}
                                                     </span>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className="product-item-totle">${Math.round(totalCartPrice)}</td>
+                                        <td className="product-item-totle">${Math.round(cartItem.price)}</td>
                                         <td className="product-item-close"><Link to="#" className="fa-solid fa-xmark text-white"></Link></td>
                                     </tr>)}
-                                   
-                    
+
+
                                 </tbody>
                             </table>
                         </div>

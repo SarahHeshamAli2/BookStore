@@ -44,7 +44,7 @@ export default function Products(){
                 </Link>
                       <br/>
                      <div className="text-center"> 
-                     <div onClick={function(){addToCart(product._id)}} className="btn btnhover btnhover2" to=""><button  className="addBtn p-2 border rounded-2"><i className="fa-solid fa-cart-shopping"></i>   Add to cart</button></div>
+                     <div onClick={function(){addToCart(product._id)}} className="btn btnhover btnhover2 text-white" to=""><i className="flaticon-shopping-cart-1  fa-solid fa-cart-shopping text-white"></i>   Add to cart<i/></div>
                      </div>
             </div>
             </div>
