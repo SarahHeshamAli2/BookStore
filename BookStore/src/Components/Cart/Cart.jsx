@@ -3,9 +3,10 @@ import './cart.css'
 import { Link } from 'react-router-dom'
 import { cartContext } from '../Context/CartContext'
 import $ from "jquery"
+import EmptyCart from '../EmptyCart/EmptyCart'
 export default function Cart() {
 
-    const { getCartProds, cartItems, totalCartPrice, updateCartItemsQuantity } = useContext(cartContext)
+    const { getCartProds, cartItems, totalCartPrice, updateCartItemsQuantity,clearCart } = useContext(cartContext)
     useEffect(() => {
         getCartProds()
     },[])
@@ -15,8 +16,7 @@ export default function Cart() {
     }
     
     return <>
-
-        <div id="banner my-5 py-5">
+  {cartItems == null ? <EmptyCart/>: <>      <div id="banner my-5 py-5">
             <div className="dz-bnr-inr overlay-secondary-dark dz-bnr-inr-sm" >
                 <div className="container">
                     <div className="dz-bnr-inr-entry">
@@ -82,6 +82,7 @@ export default function Cart() {
                                 
                             </table>
                             <button onClick={updateTotalCartPrice} className='btn btn-primary btnhover'>Update Cart</button>
+                            <button onClick={clearCart} className='btn btn-outline-danger mx-2 '>Clear Cart</button>
                         </div>
                     </div>
 
@@ -110,7 +111,7 @@ export default function Cart() {
                 </div>
             </div>
         </div>
-
+ </>}
 
     </>
 }

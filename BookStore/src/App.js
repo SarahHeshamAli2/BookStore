@@ -16,6 +16,7 @@ import PopUpProvider from './Components/Context/PopUpContext';
 import jwtDecode from 'jwt-decode';
 import ProfilePicture from './Components/ProfilePicture/ProfilePicture';
 import CartProvider, { CartContext } from './Components/Context/CartContext';
+import EmptyCart from './Components/EmptyCart/EmptyCart';
 
 
 export default function App() {
@@ -62,6 +63,7 @@ export default function App() {
     {path:'Products',element:<CartProvider><Products /></CartProvider>},
 
     {path:'profile',element:<Profile />},
+    {path:'emptycart',element:<EmptyCart />},
     {path:'trial',element:<ProfilePicture />},
     {path:'Signup',element: <PopUpProvider><Signup /></PopUpProvider>},
 
