@@ -465,9 +465,7 @@ useEffect(function(){
                         <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0"
                           data-bs-smooth-scroll="true" className="scrollspy-example" tabIndex="0">
                             {tableContent?.map((chap)=>   <h6 className='chapters'>
-                              {chap.split("\n").join( )}
-
-</h6>)}
+                              {chap.split("\n").join( )}</h6>)}
                     
                         
                         </div>
