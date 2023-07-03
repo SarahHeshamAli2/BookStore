@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap');
-
+.item{
+  text-align: center;
+}
 .container .row h2{
     color: #1a1668;
     font-family: 'Agdasima', sans-serif;
@@ -10,12 +12,14 @@
     font-size: 1.5rem !important;
   }
   .col-md-3 img{
-    height: 250px;
+    height: 100%;
     object-fit: cover;
   
   }
   .item img{
-    width: 100%;
+    width: 85%;
+    
+    margin: auto;
     border-radius: 5px;
     height: 300px;
   }

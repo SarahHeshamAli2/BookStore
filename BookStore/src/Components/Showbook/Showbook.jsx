@@ -6,22 +6,7 @@ import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import { cartContext } from '../Context/CartContext';
 import $, { get } from "jquery"
 export default function Showbook() {
-  const [comment, setcomment] = useState(null)
-  async function addComment (){
-    const response = await axios.post (`https://booklandstore.onrender.com/review/addcomment`,{
-      "cooment":$("#commentFromUser").val(),
-      "isCommentOrReply":"Comment",
-      "user": localStorage.getItem("userId"),
-      "product": productDetails._id
-  })
-  if(response.status = 200) {
-setcomment(response.data.cooment)
-console.log(comment);
-  }
-  // console.log(response.status);
-  // console.log(response.data);
-
-  }
+  const [comment, setcomment] = useState([])
 
 
   const {addToCart} = useContext(cartContext)
@@ -29,19 +14,32 @@ console.log(comment);
   const{id}= useParams();
  const[productDetails,setProductDetails] = useState(null);
  const[tableContent,setTableContent] = useState(null);
- async function getComments() {
-  const response = await axios.get (`https://booklandstore.onrender.com/review/getcomments`,{
-    "type":"Comment",
-    "productId":"64a2da2f9b7e73a82251d043"
+
+ async function addComment (){
+  const response = await axios.post (`https://booklandstore.onrender.com/review/addcomment`,{
+    "cooment":$("#commentFromUser").val(),
+    "isCommentOrReply":"Comment",
+    "user": localStorage.getItem("userId"),
+    "product": productDetails._id
 })
+if(response.status = 200) {
+
 console.log(response);
 }
+// console.log(response.status);
+// console.log(response.data);
 
+}
+async function showComment() {
+  const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments` )
+console.log(response);
+}
 async function getProudctDetails(){
   try {
     const {data}= await axios.get(`https://booklandstore.onrender.com/api/v1/products/${id}`)
     setProductDetails(data.data)
 setTableContent(data.data.tableOfContent)
+console.log(data.data);
 
   } catch (error) {
     console.log('Error :',error);
@@ -62,7 +60,7 @@ useEffect(function(){
             <div className="col">
               <div className="dz-box">
                 <div className="dz-media">
-                  <img src={productDetails.imageCover} alt={productDetails.productName} />
+                  <img src={productDetails.imageCover.slice(19)} alt={productDetails.productName} />
                 </div>
                 <div className="dz-content">
                   <div className="dz-header">
@@ -222,7 +220,7 @@ useEffect(function(){
                                       <Link className="fa fa-reply ss" data-bs-toggle="collapse" to="#multiCollapseExample2"
                                         role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><span
                                           className="ms-2">reply</span>
-                                          <button onClick={getComments}>show comment</button>
+                                          <button onClick={showComment}>show comment</button>
                                       </Link>
                                     </p>
                                     <div className="row">
