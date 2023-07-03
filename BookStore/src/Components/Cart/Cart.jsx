@@ -38,7 +38,7 @@ export default function Cart() {
                                         <th>Unit Price</th>
                                         <th>Quantity</th>
                                         <th>Total</th>
-                                        <th className="text-end">Close</th>
+                                        <th className="text-end"></th>
                                     </tr>
                                 </thead>
                                 <tbody>

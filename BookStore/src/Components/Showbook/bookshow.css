@@ -16,7 +16,7 @@
     display: flex;
 }
 
-.book-grid-row .dz-media {
+.book-grid-row .dz-media  img{
     width: 400px;
 }
 

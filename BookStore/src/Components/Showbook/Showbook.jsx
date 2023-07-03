@@ -32,7 +32,7 @@ useEffect(function(){
             <div className="col">
               <div className="dz-box">
                 <div className="dz-media">
-                  <img src={productDetails.imageCover} alt={productDetails.productName} />
+                  <img src={productDetails.imageCover.slice(19)} alt={productDetails.productName} />
                 </div>
                 <div className="dz-content">
                   <div className="dz-header">

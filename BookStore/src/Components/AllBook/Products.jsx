@@ -35,8 +35,9 @@ export default function Products(){
               <div>
             <div className="item">
                 <Link  to= {`/Showbook/${product._id}`}>
-                <img src={product.imageCover} alt={product.productName} />
-                 <h3 className="h6 fw-bolder text-center pt-3">{product.productName}</h3>
+                <img src={product.imageCover.slice(19)} alt={product.productName} />
+                 <h3 className="h6 fw-bolder text-center pt-3">
+                    {product.productName.slice(0,product.productName.indexOf('',32))}</h3>
                     <p className=" text-center text-muted ">{product.price}$</p>
                      <span className=" text-center">
                       <i className="fas fa-star"></i>{product.ratingsAverage}
