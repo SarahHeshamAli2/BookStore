@@ -730,3 +730,7 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+.myBadge {
+  top: 20%;
+  left: 80%;
+}

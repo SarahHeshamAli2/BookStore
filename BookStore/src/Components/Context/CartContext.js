@@ -40,7 +40,7 @@ async function getCartProds() {
             Authorization: "Bearer "+ localStorage.getItem("userToken"),
           } 
     })
-    console.log(data.data.totalCartPrice);
+    console.log(data);
     setNumberOfCartItems(data.numOfCartItems)
     setcartItems(data.data.cartItems)
     settotalCartPrice(data.data.totalCartPrice)

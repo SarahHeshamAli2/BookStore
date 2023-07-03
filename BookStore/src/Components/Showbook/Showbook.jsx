@@ -4,21 +4,43 @@ import './bookshow.css'
 import axios from "axios"
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import { cartContext } from '../Context/CartContext';
-import $ from "jquery"
+import $, { get } from "jquery"
 export default function Showbook() {
-  
-  const {addToCart} = useContext(cartContext)
+  const [comment, setcomment] = useState(null)
+  async function addComment (){
+    const response = await axios.post (`https://booklandstore.onrender.com/review/addcomment`,{
+      "cooment":$("#commentFromUser").val(),
+      "isCommentOrReply":"Comment",
+      "user": localStorage.getItem("userId"),
+      "product": productDetails._id
+  })
+  if(response.status = 200) {
+setcomment(response.data.cooment)
+console.log(comment);
+  }
+  // console.log(response.status);
+  // console.log(response.data);
 
+  }
+
+
+  const {addToCart} = useContext(cartContext)
 
   const{id}= useParams();
  const[productDetails,setProductDetails] = useState(null);
  const[tableContent,setTableContent] = useState(null);
+ async function getComments() {
+  const response = await axios.get (`https://booklandstore.onrender.com/review/getcomments`,{
+    "type":"Comment",
+    "productId":"64a2da2f9b7e73a82251d043"
+})
+console.log(response);
+}
 
 async function getProudctDetails(){
   try {
     const {data}= await axios.get(`https://booklandstore.onrender.com/api/v1/products/${id}`)
     setProductDetails(data.data)
-console.log(data.data.tableOfContent);
 setTableContent(data.data.tableOfContent)
 
   } catch (error) {
@@ -28,6 +50,7 @@ setTableContent(data.data.tableOfContent)
 }
 useEffect(function(){
   getProudctDetails()
+
 
 
 },[])
@@ -177,10 +200,15 @@ useEffect(function(){
                                         <div className="collapse multi-collapse" id="multiCollapseExample1">
                                           <div className="card card-body">
                                             <p className="comment-form-comment">
-                                              <textarea id="comments" placeholder="Type Comment Here" className="form-contro"
+                                              <div className="showComments bg-light">
+                                                <h5>Name</h5>
+                                                <p>Comment</p>
+                                                <span>Date Of Posting</span>
+                                              </div>
+                                              <textarea id="commentFromUser" placeholder="Type Comment Here" className="form-contro"
                                                 name="comment" cols="45" rows="3" required="required"></textarea>
                                             </p>
-                                            <button id="submit" type="submit" className="submit btn btn-primary filled">
+                                            <button onClick={addComment} id="submit" type="submit" className="submit btn btn-primary filled">
                                               Submit Now
                                               <i className="fa fa-angle-right m-l10"></i>
                                             </button>
@@ -194,6 +222,7 @@ useEffect(function(){
                                       <Link className="fa fa-reply ss" data-bs-toggle="collapse" to="#multiCollapseExample2"
                                         role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><span
                                           className="ms-2">reply</span>
+                                          <button onClick={getComments}>show comment</button>
                                       </Link>
                                     </p>
                                     <div className="row">
@@ -433,11 +462,12 @@ useEffect(function(){
                   </div>
                   <div id="developement-2" className="tab-pane">
                     <div className="row">
+                      
                       <div className="col-md-12 topic ">
                         <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0"
                           data-bs-smooth-scroll="true" className="scrollspy-example" tabIndex="0">
                             {tableContent?.map((chap)=>   <h6 className='chapters'>
-                              {chap}
+                              {chap.split("\n").join( )}
 
 </h6>)}
                     

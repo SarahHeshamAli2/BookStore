@@ -85,14 +85,10 @@ export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
             <button type="button" className="btn btn-primary btnhover" data-bs-toggle="modal" data-bs-target="#exampleModal2">
               Sign Up
   </button></> :       <>
-              <div className="shopIcon w-25">
-              <img src={require("../../images/bag.png")} alt="" className='w-100'  />
-
-              </div>
+   
   <button onClick={logOutAndNavToHome} type="button" className="btn btn-primary btnhover" >
             Log Out
-              <h6 className='bg-danger text-white'>            {numberOfCartItems != null ? numberOfCartItems : console.log("fady")}
-</h6>
+
 </button>
   
   </>

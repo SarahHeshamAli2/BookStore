@@ -2,12 +2,17 @@ import React, { useContext, useEffect } from 'react'
 import './cart.css'
 import { Link } from 'react-router-dom'
 import { cartContext } from '../Context/CartContext'
+import $ from "jquery"
 export default function Cart() {
    
     const {getCartProds,cartItems,totalCartPrice,updateCartItemsQuantity} = useContext(cartContext)
     useEffect(()=>{
         getCartProds()
     },[])
+    function updateTotalCartPrice() {
+
+        $("#totalPrice").text(Math.round(totalCartPrice)+"$")
+    }
     return <>
     
         <div id="banner my-5 py-5">
@@ -73,11 +78,14 @@ export default function Cart() {
                                    
                     
                                 </tbody>
+                                
                             </table>
+                            <button onClick={updateTotalCartPrice} className='btn btn-primary btnhover'>Update Cart</button>
                         </div>
                     </div>
 
                 </div>
+
                 <div className="row">
 
                     <div className="col-lg-12">
@@ -89,7 +97,7 @@ export default function Cart() {
 
                                     <tr>
                                         <td>Total</td>
-                                        <td>${Math.round(totalCartPrice)}</td>
+                                        <td id='totalPrice'>0$</td>
                                     </tr>
                                 </tbody>
                             </table>
