@@ -41,6 +41,27 @@ export default function Showbook() {
       console.log("error", error)
     }
 
+<<<<<<< HEAD
+=======
+}
+async function showComment() {
+  const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments/`,{
+    "type":"Comment",
+    "productId":"64a2bde69b7e73a82251ce74"
+} )
+console.log(response);
+}
+async function getProudctDetails(){
+  try {
+    const {data}= await axios.get(`https://booklandstore.onrender.com/api/v1/products/${id}`)
+    setProductDetails(data.data)
+setTableContent(data.data.tableOfContent)
+console.log(data.data);
+
+  } catch (error) {
+    console.log('Error :',error);
+    
+>>>>>>> 5da0c7898bf412b8df75ab31a204ce63f17e4c4e
   }
   async function showComment() {
     const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments`, {
