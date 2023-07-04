@@ -1,17 +1,29 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 import './profile.css'
+import { cartContext } from '../Context/CartContext';
+import { toast } from 'react-toastify';
 export default function Profile() {
-	const options = [
+	useEffect(()=>{getAllPrducts()},[])
+
+
+
+	let options = [
+			
 		{ label: "web development", value: "web development" },
 		{ label: "AI", value: "AI" },
 		{ label: "JavaScript", value: "JavaScript" },
 	  ];
 	 
+
+
+
 		const [selected, setSelected] = useState([]);
+		const {getAllPrducts,allProducts,catgegory} = useContext(cartContext)
 	const userName = localStorage.getItem("userName")
 	return <>
+	
 		<div className="  bg-white">
 			<div className="content-block">
 				<section className="content-inner bg-white">
@@ -108,7 +120,7 @@ export default function Profile() {
 										</div>
 									</div>
 								</div>
-								<button className="btn btn-primary btnhover">Save Setting</button>
+								<button onClick={function(){toast.success("info updated successfully")}} className="btn btn-primary btnhover">Save Setting</button>
 							</div>
 						</div>
 					</div>

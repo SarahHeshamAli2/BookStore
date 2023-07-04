@@ -9,6 +9,7 @@ export const cartContext = createContext()
 
 export default function CartProvider({children}) {
     const [allProducts , setAllProducts]=useState(null);
+    const [catgegory , setCategory]=useState(null);
 
     async function getAllPrducts(){
 
@@ -17,6 +18,7 @@ export default function CartProvider({children}) {
         console.log(data.data);
        
         setAllProducts(data.data)
+        setCategory(data.data)
         
         
     }
@@ -138,7 +140,7 @@ async function updateCartItemsQuantity(id,count) {
 
 
 }
-return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart,deleteSpecItem,getAllPrducts,allProducts}} >
+return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart,deleteSpecItem,getAllPrducts,allProducts,catgegory}} >
 
 
 {children}
