@@ -1,22 +1,25 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useLayoutEffect } from 'react'
 import './cart.css'
 import { Link } from 'react-router-dom'
 import { cartContext } from '../Context/CartContext'
 import $ from "jquery"
 import EmptyCart from '../EmptyCart/EmptyCart'
+import LoadingScreen from '../LoadingScreen/LoadingScreen'
 export default function Cart() {
-
-    const { getCartProds, cartItems, totalCartPrice, updateCartItemsQuantity,clearCart } = useContext(cartContext)
-    useEffect(() => {
-        getCartProds()
-    },[])
+useLayoutEffect(()=>{
+    getCartProds()
+},[])
+    const { getCartProds, cartItems, totalCartPrice, updateCartItemsQuantity,clearCart,deleteSpecItem,numberOfCartItems,load} = useContext(cartContext)
+ 
     function updateTotalCartPrice() {
 
         $("#totalPrice").text(Math.round(totalCartPrice)+"$")
     }
     
     return <>
-  {cartItems == null ? <EmptyCart/>: <>      <div id="banner my-5 py-5">
+{load ? <LoadingScreen/> :   <div className='cartEmpty'>
+{cartItems?.length ==0 ? <EmptyCart/> :    <>
+    <div id="banner my-5 py-5 ">
             <div className="dz-bnr-inr overlay-secondary-dark dz-bnr-inr-sm" >
                 <div className="container">
                     <div className="dz-bnr-inr-entry">
@@ -73,8 +76,8 @@ export default function Cart() {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className="product-item-totle">${Math.round(cartItem.price)}</td>
-                                        <td className="product-item-close"><Link to="#" className="fa-solid fa-xmark text-white"></Link></td>
+                                        <td className="product-item-totle">${Math.round(cartItem.quantity*cartItem.price)}</td>
+                                        <td onClick={function(){deleteSpecItem(cartItem._id)}} className="product-item-close"><Link  className="fa-solid fa-xmark text-white"></Link></td>
                                     </tr>)}
 
 
@@ -110,8 +113,9 @@ export default function Cart() {
                     </div>
                 </div>
             </div>
-        </div>
- </>}
+        </div></>}
+ </div>} 
+
 
     </>
 }

@@ -43,7 +43,10 @@ $(".postedComment").fadeIn(500,function(){
 
 }
 async function showComment() {
-  const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments` )
+  const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments`,{
+    "type":"Comment",
+    "productId":"64a2da2f9b7e73a82251d043"
+} )
 console.log(response);
 }
 async function getProudctDetails(){
@@ -199,6 +202,7 @@ useEffect(function(){
  }
   <div className='alert alert-success postedComment' style={{display:"none"}}>Your comment has been posted</div>
 </div>
+<button onClick={showComment}>show comment</button>
                                       </div>
                                     </div>
                                   </div>
