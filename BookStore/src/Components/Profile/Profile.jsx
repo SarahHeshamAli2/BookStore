@@ -7,10 +7,9 @@ export default function Profile() {
 		{ label: "web development", value: "web development" },
 		{ label: "AI", value: "AI" },
 		{ label: "JavaScript", value: "JavaScript" },
-		{ label: "ML", value: "ML", disabled: true },
 	  ];
-	  const Example = () => {
-		const [selected, setSelected] = useState([]);}
+	 
+		const [selected, setSelected] = useState([]);
 	const userName = localStorage.getItem("userName")
 	return <>
 		<div className="  bg-white">
@@ -95,9 +94,17 @@ export default function Profile() {
 										</div>
 									</div>
 									<div className="col-lg-6 col-md-6">
-										<div className="mb-4">
+										<div className="mb-4 ">
 											<label htmlFor="formcontrolinput10" className="form-label">Favourite list:</label>
-											<input type="text" className="form-control" id="formcontrolinput10" placeholder="science fiction" />
+											<div>
+      <MultiSelect
+        options={options}
+        value={selected}
+        onChange={setSelected}
+        labelledBy="Select"
+	
+      />
+    </div>
 										</div>
 									</div>
 								</div>

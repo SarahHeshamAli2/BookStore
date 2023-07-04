@@ -41,7 +41,7 @@ function filterProducts() {
     return<>
      {allProducts? <div className="container">
       <div className="row">
-      <h2 className="text-center my-5">Books At Bookland</h2>
+      <h2 className="text-center my-5">Courses At Bookland</h2>
         {allProducts.map(function(product, idx){
             return product.isCourseOrBook === "Course" ?  <div key={ idx } className="col-md-3 pt-5  mb-5">
             <div>
