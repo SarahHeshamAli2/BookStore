@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import './Products.css'
 import { cartContext } from "../Context/CartContext";
-export default function Products(){
+export default function ProductsOfCourses(){
     const {addToCart} = useContext(cartContext)
 
     const [allProducts , setAllProducts]=useState(null);
@@ -16,6 +16,7 @@ export default function Products(){
         const {data} =await axios.get('https://booklandstore.onrender.com/api/v1/products')
        
         setAllProducts(data.data)
+        
     }
        catch(e){
         console.log("Error: ",e);
@@ -33,6 +34,7 @@ export default function Products(){
         {allProducts.map(function(product, idx){
             return <div key={ idx } className="col-md-3 pt-5  mb-5">
               <div>
+
             <div className="item">
                 <Link  to= {`/Showbook/${product._id}`}>
                 <img src={product.imageCover.slice(19)} alt={product.productName} />
@@ -52,6 +54,7 @@ export default function Products(){
         </div>})}
     </div>
 </div> :<LoadingScreen/> } 
+        
  
 </>
 }

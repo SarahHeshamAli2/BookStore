@@ -5,7 +5,9 @@ import Home from './Components/Home/Home'
 import Login from './Components/Login/Login'
 import Signup from './Components/Signup/Signup'
 import Profile from './Components/Profile/Profile';
-import Products from './Components/AllBook/Products'
+import Products from './Components/AllBookorCourses/Products'
+import ProductOfCourses from './Components/AllBookorCourses/ProductOfCourses'
+
 import About from './Components/About/About';
 import Contact from './Components/Contact/Contact';
 import Cart from './Components/Cart/Cart';
@@ -17,7 +19,7 @@ import jwtDecode from 'jwt-decode';
 import ProfilePicture from './Components/ProfilePicture/ProfilePicture';
 import CartProvider, { CartContext } from './Components/Context/CartContext';
 import EmptyCart from './Components/EmptyCart/EmptyCart';
-
+import Checkout from './Components/Checkout/Checkout'
 
 export default function App() {
   
@@ -55,13 +57,14 @@ export default function App() {
     {path:'home',element:<Home />,children:[
       {path:'Login', element:<PopUpProvider><Login /></PopUpProvider>}
     ]
-  
+
   },
     {path:'about',element:<About/>},
     {path:'contact',element:<Contact/>},
     {path:'cart',element:<CartProvider><Cart /></CartProvider>},
     {path:'Products',element:<CartProvider><Products /></CartProvider>},
-
+    {path:'ProductOfCourses',element:<CartProvider><ProductOfCourses /></CartProvider>},
+    {path:'Checkout',element:<Checkout/>},
     {path:'profile',element:<Profile />},
     {path:'emptycart',element:<EmptyCart />},
     {path:'trial',element:<ProfilePicture />},

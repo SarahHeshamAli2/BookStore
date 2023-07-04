@@ -56,14 +56,17 @@ export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
               <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Pages
               </Link>
-              <ul className="dropdown-menu">
+              <ul className="dropdown-menu dropdown-body mb-5">
 
 
                 <li><Link className="dropdown-item" to="/profile">My profile</Link></li>
                 <li><div className="dropdown-divider"></div></li>
                 <li><Link className="dropdown-item" to="/cart">Cart</Link></li>
                 <li><div className="dropdown-divider"></div></li>
-                <li><Link className="dropdown-item" to="/products">all prouduct</Link></li>
+                <li><Link className="dropdown-item" to="/products">all Books</Link></li>
+                <li><div className="dropdown-divider"></div></li>
+                <li><Link className="dropdown-item" to="/productOfCourses">all Courses</Link></li>
+
               </ul>
             </li> : ""}
             <li className="nav-item">
