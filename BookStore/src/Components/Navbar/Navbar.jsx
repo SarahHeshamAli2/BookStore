@@ -5,10 +5,7 @@ import Signup from '../Signup/Signup'
 import { cartContext } from '../Context/CartContext'
 
 export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
-  useEffect(()=>{
-    console.log(numberOfCartItems,cartItems);
 
-  },[])
   const {numberOfCartItems,cartItems} = useContext(cartContext)
   return <>
   

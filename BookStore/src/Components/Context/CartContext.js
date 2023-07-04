@@ -3,6 +3,7 @@ import $ from "jquery"
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import EmptyCart from "../EmptyCart/EmptyCart";
 
 export const cartContext = createContext()
 
@@ -17,10 +18,10 @@ try {
     const response = await axios.delete(`https://booklandstore.onrender.com/api/v1/cart`,{ headers: {
         Authorization: "Bearer "+ localStorage.getItem("userToken"),
       } })
+      console.log(response);
       if(response.status == 204) {
-        console.log("eshta");
-        setcartItems([])
         console.log(cartItems);
+        setcartItems([])
       }
 } catch (error) {
     console.log("error",error);
@@ -30,6 +31,26 @@ try {
 
     }
 
+async function deleteSpecItem(id)
+ {
+    try {
+        
+    const {data} = await axios.delete(`https://booklandstore.onrender.com/api/v1/cart/${id}`,{
+        headers: {
+            Authorization: "Bearer "+ localStorage.getItem("userToken"),
+          } 
+    })
+    if(data.status == "success"){
+        toast.error("product deleted successfully")
+        setcartItems(data.data.cartItems)
+    }
+    console.log(data);
+
+        
+    } catch (error) {
+        console.log("error",error);
+    }
+ }
 async function addToCart(prodId) {
 
 
@@ -57,21 +78,27 @@ async function addToCart(prodId) {
 }
 async function getCartProds() {
    try {
+       setLoad(true)
     const {data} =await axios.get (`https://booklandstore.onrender.com/api/v1/cart` , {
         headers: {
             Authorization: "Bearer "+ localStorage.getItem("userToken"),
           } 
     })
-    console.log(data);
+    setLoad(false)
+    console.log(data.data);
     setNumberOfCartItems(data.numOfCartItems)
     setcartItems(data.data.cartItems)
     settotalCartPrice(data.data.totalCartPrice)
+
    } catch (error) {
+    setLoad(false)
     console.log("error",error);
-    console.log();
-    // if(error.response.data.status == "fail") {
-    //     navigate("/emptycart")
-    // }
+    if(error.response.data.status == "fail") {
+
+        navigate("/emptycart")
+      
+    }
+
    }
 }
 async function updateCartItemsQuantity(id,count) {
@@ -94,7 +121,7 @@ async function updateCartItemsQuantity(id,count) {
 
 
 }
-return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart}} >
+return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart,deleteSpecItem}} >
 
 
 {children}
