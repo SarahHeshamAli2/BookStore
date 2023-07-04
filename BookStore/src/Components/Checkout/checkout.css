@@ -1,0 +1,53 @@
+.widget {
+    margin-bottom: 45px;
+}
+
+.widget:last-child {
+    margin-bottom: 0;
+}
+
+.widget .widget-title {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.widget .widget-title:before {
+    content: "";
+    height: 100%;
+    width: 5px;
+    border-radius: 10px;
+    background-color: #EAA451;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.shop-form .form-group {
+    margin-bottom: 25px;
+
+}
+
+.shop-form .form-group .bootstrap-select {
+    width: 100% !important;
+}
+
+.shop-form .form-group .bootstrap-select .btn {
+    font-weight: 300;
+    color: #000;
+}
+
+.shop-form .form-group .bootstrap-select .btn-light {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.shop-form .form-group .bootstrap-select .btn-light:hover {
+    background-color: rgb(245, 245, 245);
+    border-color: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.shop-form .form-group .bootstrap-select .btn-light:focus {
+    outline: 0 !important;
+}

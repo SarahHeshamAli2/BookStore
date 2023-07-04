@@ -60,7 +60,7 @@ useLayoutEffect(()=>{
                                             <div className="quantity btn-quantity style-1 me-3">
                                                 <div className="input-group bootstrap-touchspin">
                                                     <span className="input-group-addon bootstrap-touchspin-prefix" style={{ display: "none" }}></span>
-                                                    <input id="demo_vertica12" type="number" value={cartItem.quantity} name="demo_vertica12" className="form-control text-center" style={{ display: "block" }} />
+                                                    <input id="demo_vertica12" type="number" value={cartItem.quantity} name="demo_vertica12" className="form-control text-center" style={{ display: "block" }}  />
                                                     <span className="input-group-addon bootstrap-touchspin-postfix" style={{ display: "none" }}>
                                                     </span>
                                                     <span className="input-group-btn-vertical">
@@ -106,8 +106,8 @@ useLayoutEffect(()=>{
                                     </tr>
                                 </tbody>
                             </table>
-                            <div className="form-group m-b25">
-                                <Link to="home" className="btn btn-primary btnhover" type="button">Checkout</Link>
+                            <div className="form-group m-b25 ">
+                                <Link to="/Checkout" className="btn btn-primary btnhover btnhover2  text-white " type="button">Checkout</Link>
                             </div>
                         </div>
                     </div>

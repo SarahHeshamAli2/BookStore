@@ -196,8 +196,8 @@ useEffect(function(){
                             
                                     <div className="row">
                                       <div className="col-12">
-                                      <div class="mb-3">
-  <textarea class="form-control" id="commentSec" rows="3" placeholder='Write your comment here'></textarea>
+                                      <div className="mb-3">
+  <textarea className="form-control" id="commentSec" rows="3" placeholder='Write your comment here'></textarea>
   {loading? <button className='btn  w-25 btn-primary'><i className="fa-solid fa-spinner fa-spin "></i></button> :  <button onClick={addComment} className='btn btn-primary btnhover btnhover2 my-2'>Post</button>
  }
   <div className='alert alert-success postedComment' style={{display:"none"}}>Your comment has been posted</div>

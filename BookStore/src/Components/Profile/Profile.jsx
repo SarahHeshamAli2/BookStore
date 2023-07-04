@@ -1,9 +1,16 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
-
+import React, { useState } from "react";
+import { MultiSelect } from "react-multi-select-component";
 import './profile.css'
 export default function Profile() {
-
+	const options = [
+		{ label: "web development", value: "web development" },
+		{ label: "AI", value: "AI" },
+		{ label: "JavaScript", value: "JavaScript" },
+		{ label: "ML", value: "ML", disabled: true },
+	  ];
+	  const Example = () => {
+		const [selected, setSelected] = useState([]);}
 	const userName = localStorage.getItem("userName")
 	return <>
 		<div className="  bg-white">
