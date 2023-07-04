@@ -14,6 +14,7 @@ export default function Products(){
 
        try{
         const {data} =await axios.get('https://booklandstore.onrender.com/api/v1/products')
+        console.log(data.data);
        
         setAllProducts(data.data)
     }
@@ -21,7 +22,13 @@ export default function Products(){
         console.log("Error: ",e);
        }
     }
+function filterProducts() {
 
+    const myNewFilter = allProducts.filter((pro)=> { return pro.isCourseOrBook == "Book"})
+    console.log(myNewFilter);
+    
+
+}
     useEffect(function(){
         getAllPrducts()
     },[]);
@@ -47,9 +54,12 @@ export default function Products(){
                      <div className="text-center"> 
                      <div onClick={function(){addToCart(product._id)}} className="btn btnhover btnhover2 text-white" to=""><i className="flaticon-shopping-cart-1  fa-solid fa-cart-shopping text-white"></i>   Add to cart<i/></div>
                      </div>
+                     <button onClick={filterProducts}>filter</button>
             </div>
             </div>
         </div>})}
+
+  
     </div>
 </div> :<LoadingScreen/> } 
  
