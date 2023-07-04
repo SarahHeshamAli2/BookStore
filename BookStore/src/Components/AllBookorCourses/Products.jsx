@@ -6,34 +6,10 @@ import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import './Products.css'
 import { cartContext } from "../Context/CartContext";
 export default function Products(){
-    const {addToCart} = useContext(cartContext)
+    const {addToCart,getAllPrducts,allProducts} = useContext(cartContext)
 
-    const [allProducts , setAllProducts]=useState(null);
-    const [filteredPro , setFilterd] = useState(null)
 
-    async function getAllPrducts(){
 
-       try{
-        const {data} =await axios.get('https://booklandstore.onrender.com/api/v1/products')
-        console.log(data.data);
-       
-        setAllProducts(data.data)
-        
-        
-    }
-       catch(e){
-        console.log("Error: ",e);
-       }
-    }
-function filterProducts() {
-    
-
-    const myNewFilter = allProducts.filter((pro)=> { return pro.isCourseOrBook == "Book"})
-    setFilterd(myNewFilter)
-    console.log(filteredPro);
-    
-
-}
     useEffect(function(){
         getAllPrducts()
     },[]);

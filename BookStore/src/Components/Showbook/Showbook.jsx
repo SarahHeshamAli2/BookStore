@@ -43,9 +43,9 @@ $(".postedComment").fadeIn(500,function(){
 
 }
 async function showComment() {
-  const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments`,{
+  const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments/`,{
     "type":"Comment",
-    "productId":"64a2da2f9b7e73a82251d043"
+    "productId":"64a2bde69b7e73a82251ce74"
 } )
 console.log(response);
 }

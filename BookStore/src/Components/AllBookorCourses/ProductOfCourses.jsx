@@ -7,32 +7,9 @@ import './Products.css'
 import { cartContext } from "../Context/CartContext";
 export default function ProductsOfCourses(){
 
-    const [filteredPro , setFilterd] = useState(null)
 
-    const {addToCart} = useContext(cartContext)
+    const {addToCart,getAllPrducts,allProducts} = useContext(cartContext)
 
-    const [allProducts , setAllProducts]=useState(null);
-function filterProducts() {
-    
-
-    const myNewFilter = allProducts.filter((pro)=> { return pro.isCourseOrBook == "Book"})
-    setFilterd(myNewFilter)
-    console.log(filteredPro);
-    
-
-}
-    async function getAllPrducts(){
-
-       try{
-        const {data} =await axios.get('https://booklandstore.onrender.com/api/v1/products')
-       
-        setAllProducts(data.data)
-        
-    }
-       catch(e){
-        console.log("Error: ",e);
-       }
-    }
 
     useEffect(function(){
         getAllPrducts()
