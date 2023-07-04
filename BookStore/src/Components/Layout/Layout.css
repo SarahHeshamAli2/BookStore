@@ -1,3 +1,35 @@
+footer .footer-bottom {
+    padding: 28px 0;
+    border-top: 1px solid #f3f3f3;
+    color:#EAA451;
+    font-size: 15px; }
+    @media only screen and (max-width: 575px) {
+      footer .footer-bottom {
+        font-size: 14px; } }
+    footer .footer-bottom p {
+      margin-bottom: 0; }
+    footer .footer-bottom .copyright-text a {
+      color: #ffffff; }
+   
+  @media only screen and (max-width: 1024px) {
+    footer .footer-bottom p {
+      font-size: 13px; } }
+  @media only screen and (max-width: 991px) {
+    footer .footer-top {
+      padding: 45px 0px 30px; }
+    footer .footer-bottom .text-start,
+    footer .footer-bottom .text-end {
+      text-align: center !important; }
+    footer .footer-bottom .text-end {
+      margin-top: 15px; }
+    footer .footer-bottom p {
+      font-size: 15px; } }
+  @media only screen and (max-width: 575px) {
+
+    footer.footer-dark .footer-bottom {
+      border-color: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5); }
+    }
 .scroltop {
     background: #EAA451;
     border-color: #EAA451;

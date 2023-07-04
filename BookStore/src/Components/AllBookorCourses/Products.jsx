@@ -17,6 +17,8 @@ export default function Products(){
         console.log(data.data);
        
         setAllProducts(data.data)
+        
+        
     }
        catch(e){
         console.log("Error: ",e);
@@ -40,6 +42,7 @@ function filterProducts() {
         {allProducts.map(function(product, idx){
             return <div key={ idx } className="col-md-3 pt-5  mb-5">
               <div>
+
             <div className="item">
                 <Link  to= {`/Showbook/${product._id}`}>
                 <img src={product.imageCover.slice(19)} alt={product.productName} />
@@ -62,6 +65,7 @@ function filterProducts() {
   
     </div>
 </div> :<LoadingScreen/> } 
+        
  
 </>
 }

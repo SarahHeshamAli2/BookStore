@@ -228,8 +228,8 @@ color: #EAA451;
   background-color: #EAA451;
   padding: 0;
   display: inline-block;
-  padding: 15px 30px;
-  border-radius: 6px;
+  padding: 22px 35px;
+  border-radius: 5%;
 }
 
 .breadcrumb-row ul li {

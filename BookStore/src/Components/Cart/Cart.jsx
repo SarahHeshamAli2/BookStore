@@ -84,8 +84,8 @@ useLayoutEffect(()=>{
                                 </tbody>
                                 
                             </table>
-                            <button onClick={updateTotalCartPrice} className='btn btn-primary btnhover'>Update Cart</button>
-                            <button onClick={clearCart} className='btn btn-outline-danger mx-2 '>Clear Cart</button>
+                            <button onClick={updateTotalCartPrice} className='btn btnhover btnhover2 text-white '>Update Cart</button>
+                            <button onClick={clearCart} className='btn btnhover btnhover2 text-white ms-3 '>Clear Cart</button>
                         </div>
                     </div>
 
