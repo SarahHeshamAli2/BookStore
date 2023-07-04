@@ -11,7 +11,7 @@ return <>
 
 <Link to={"/products"}>
 
-<button className=' btn btn-outline-primary d-block w-50 m-auto m-0'>start shopping</button>
+<button className=' btn btnhover btnhover2 text-white d-block w-50 m-auto m-0'>start shopping</button>
 
 </Link>
 
