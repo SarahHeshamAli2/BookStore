@@ -60,7 +60,7 @@ export default function Products(){
  {console.log(allProducts?.length,visible)}
 
       {visible !== allProducts.length ?     <button onClick={showMoreItems} className='btn btn-primary  w-50 m-auto mt-4'>Load More</button>
- : <><i onClick={scrollUp} className="fa-solid fa-circle-up fs-3 text-center mt-5 text-primary cursor-pointer"></i></>}
+ : <><i onClick={scrollUp} className="fa-solid fa-circle-up fs-3 text-center mt-5 text-primary cursor-pointer "></i></>}
     </div>
 </div> :<LoadingScreen /> } 
         

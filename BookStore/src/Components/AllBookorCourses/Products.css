@@ -30,6 +30,9 @@
     font-size: 18px;
     /* margin-bottom: 12px; */
   }
+   i.mary{
+color: #EAA451 !important;
+  }
   .item span{
     color: #EAA451;
     display: block;

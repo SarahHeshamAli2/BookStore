@@ -1,21 +1,22 @@
 import React, { useContext } from 'react'
 import Navbar from '../Navbar/Navbar'
+import ScrollToTop from "react-scroll-to-top";
+
 import ReactDOM from 'react-dom';
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import './Layout.css'
-import $ from 'jquery';
+import $ from "jquery"
 
 export default function Layout({getUserData,currentUser,logOut}) {
 
-
-  const navigate = useNavigate()
-   function scrollUp () {
+  function scrollUp () {
 
     $("html, body").animate({
       scrollTop: $(".scroltop").offset().top
   }, 500);  
   }
-  
+
+  let navigate = useNavigate()
 
   function logOutAndNavToHome() {
 
@@ -130,7 +131,11 @@ export default function Layout({getUserData,currentUser,logOut}) {
         </div>
       </div>
     </div>
-    <button className="scroltop"  type="button" ><i onClick={scrollUp} className="fas fa-arrow-up"></i></button>
-
+    
+    <div>
+      <div style={{ marginTop: "150vh", color:"white" }} />
+      <ScrollToTop smooth className="scroltop" />
+    </div>
   </>
 }
+

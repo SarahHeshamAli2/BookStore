@@ -7,7 +7,7 @@ import './Products.css'
 import $ from "jquery"
 
 import { cartContext } from "../Context/CartContext";
-export default function Products(){
+export default function ProductsOfCourses(){
     const {addToCart,getAllPrducts,allProducts} = useContext(cartContext)
     const [visible, setVisible] = useState(12)
 
@@ -33,7 +33,7 @@ export default function Products(){
         <div>
 
       <div className="item">
-          <Link  to= {`/Showbook/${product._id}`}>
+          <Link  to= {`/ShowCourses/${product._id}`}>
           <img src={product.imageCover.slice(19)} alt={product.productName} />
            <h3 className="h6 fw-bolder text-center pt-3">
               {product.productName.slice(0,product.productName.indexOf('',30))}</h3>
