@@ -86,7 +86,7 @@ export default function Layout({getUserData,currentUser,logOut}) {
                         <span className="ms-2">Profile</span>
                       </div>
                     </Link>
-                    <Link to="/cart" className="dropdown-item d-flex justify-content-between align-items-center ai-icon">
+                    <Link to="/allorder" className="dropdown-item d-flex justify-content-between align-items-center ai-icon">
                       <div>
                         <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px"
                           fill="#000000">
