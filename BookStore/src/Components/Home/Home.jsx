@@ -61,7 +61,7 @@ export default function Home() {
 
 <div className="item text-center  ">
     <Link  to= {`/Showbook/${product._id}`}>
-    <img src={product.imageCover.slice(19)} alt={product.productName} />
+    <img src={product.imageCover.slice(76)} alt={product.productName} />
      <h3 className="h6 fw-bolder text-center pt-3">
         {product.productName.slice(0,product.productName.indexOf('',25))}</h3>
         <p className=" text-center text-muted ">{product.price}$</p>
