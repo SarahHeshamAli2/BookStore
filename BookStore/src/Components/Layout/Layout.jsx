@@ -9,25 +9,13 @@ export default function Layout({getUserData,currentUser,logOut}) {
 
 
   const navigate = useNavigate()
-  function scroltop(){
-    $('.scroltop').on('click',(function() {
-      let tp=$(window).scrollTop()
-      $("html, body").animate({
-          scrollTop: 0
-      }, tp/2);
-      return false;
-  }))
+   function scrollUp () {
 
-  $(window).onbind("scroll", function() {
-      var scroll = $(window).scrollTop();
-      if (scroll > 300) {
-         $(".scroltop").fadeIn(1000);
-      } else {
-          $(".scroltop").fadeOut(1000);
-      }
-  });
-
+    $("html, body").animate({
+      scrollTop: $(".scroltop").offset().top
+  }, 500);  
   }
+  
 
   function logOutAndNavToHome() {
 
@@ -54,13 +42,13 @@ export default function Layout({getUserData,currentUser,logOut}) {
         <div className="header-search-nav  rounded-2 m-auto col-lg-5">
      <div className="input-group search-input" >
      <div className="category">
-     <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+     <div className="dropdown">
+  <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
   Choose Category
   </button>
-  <ul class="dropdown-menu">
-    <li className='cursor-pointer' onClick={navigateToBooks}><a class="dropdown-item">Books</a></li>
-    <li className='cursor-pointer' onClick={navigateToCourses}><a class="dropdown-item" >Courses</a></li>
+  <ul className="dropdown-menu">
+    <li className='cursor-pointer' onClick={navigateToBooks}><a className="dropdown-item">Books</a></li>
+    <li className='cursor-pointer' onClick={navigateToCourses}><a className="dropdown-item" >Courses</a></li>
   </ul>
 </div>
 </div>
@@ -142,7 +130,7 @@ export default function Layout({getUserData,currentUser,logOut}) {
         </div>
       </div>
     </div>
-    <button className="scroltop"  type="button" ><i className="fas fa-arrow-up"></i></button>
+    <button className="scroltop"  type="button" ><i onClick={scrollUp} className="fas fa-arrow-up"></i></button>
 
   </>
 }

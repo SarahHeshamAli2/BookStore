@@ -55,7 +55,7 @@ export default function Products(){
     return<>
      {allProducts? <div className="container fetProducts">
       <div className="row">
-      <h2 className="text-center my-5">Books At Bookland</h2>
+      <h2 className="text-center my-5">Courses At Bookland</h2>
  {displayProducts}   
  {console.log(allProducts?.length,visible)}
 

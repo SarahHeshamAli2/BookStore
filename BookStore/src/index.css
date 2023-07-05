@@ -734,7 +734,6 @@ input[type=number] {
   top: 20%;
   left: 80%;
 }
-<<<<<<< HEAD
 /********/
 .row {
   
@@ -742,8 +741,4 @@ input[type=number] {
   flex-wrap: wrap;
   margin: 0px !important;
 
-=======
-.navbar {
-z-index: 50000000;
->>>>>>> d0c68235a7a1b42218181248f911bbe25531ba06
 }
