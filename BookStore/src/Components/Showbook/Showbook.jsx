@@ -83,30 +83,23 @@ console.log(data);
                 </div>
                 <div className="dz-content">
                   <div className="dz-header">
-                    <h3 className="title">{productDetails.productName}</h3>
+                    <h3 className="title ">{productDetails.productName}    <span className=" text-center ms-2 text-yellow ssize">
+                          <i className="fas fa-star  "></i>{productDetails.ratingsAverage}
+                        </span></h3>
                     <div className="shop-item-rating ">
-                      <ul className="dz-rating ">
-                        <span className=" text-center ms-2 text-yellow">
-                          <i className="fas fa-star "></i>{productDetails.ratingsAverage}
-                        </span>
+                      <ul className="dz-rating pt-3 ">
+                   
                       </ul>
                     </div>
                   </div>
-                  <div className="dz-body">
-                    <div className="book-detail">
-                      <ul className="book-info">
-                        <li>
-                          <div className="writer-info text-decoration-none">
-                            <img src={require("../../images/profile2.jpg")} alt="book" />
-                            <div><span>Auther</span>{productDetails.authorName}</div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                 
                   <div className="tab-pane show">
                     <table className="table border book-overview">
                       <thead>
+                      <tr>
+                          <th>Auther</th>
+                          <td>{productDetails.authorName}</td>
+                        </tr>
                         <tr>
                           <th>Publisher</th>
                           <td>{productDetails.publisher}</td>
@@ -149,7 +142,7 @@ console.log(data);
           </div>
 
           <div className="row">
-            <div className="col-xl-8">
+            <div className="col-xl-8 my-5">
               <div className="product-description tabs-site-button">
                 <ul className="nav nav-tabs">
                   <li>

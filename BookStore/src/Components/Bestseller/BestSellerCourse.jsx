@@ -32,7 +32,7 @@ export default function BestSellerCourse(){
           <div>
 
 <div className="item">
-    <Link  to= {`/Showbook/${product._id}`}>
+    <Link  to= {`/ShowCourses/${product._id}`}>
     <img src={product.imageCover.slice(19)} alt={product.productName} />
      <h3 className="h6 fw-bolder text-center pt-3">
         {product.productName.slice(0,product.productName.indexOf('',30))}</h3>

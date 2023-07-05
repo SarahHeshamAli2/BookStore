@@ -30,7 +30,8 @@ footer .footer-bottom {
       border-color: rgba(255, 255, 255, 0.1);
       color: rgba(255, 255, 255, 0.5); }
     }
-    /* scrol**/
+    /* scrol*     display: none;
+*/
 .scroltop {
     background: #EAA451;
     border-color: #EAA451;
@@ -40,7 +41,6 @@ footer .footer-bottom {
     bottom: 15px;
     color: #fff!important;
     cursor: pointer;
-    display: none;
     height: 50px;
     line-height: 50px;
     margin: 0;

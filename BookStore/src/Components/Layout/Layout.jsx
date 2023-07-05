@@ -1,33 +1,22 @@
 import React, { useContext } from 'react'
 import Navbar from '../Navbar/Navbar'
+import ScrollToTop from "react-scroll-to-top";
+
 import ReactDOM from 'react-dom';
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import './Layout.css'
-import $ from 'jquery';
+import $ from "jquery"
 
 export default function Layout({getUserData,currentUser,logOut}) {
 
+  function scrollUp () {
 
-  const navigate = useNavigate()
-  function scroltop(){
-    $('.scroltop').on('click',(function() {
-      let tp=$(window).scrollTop()
-      $("html, body").animate({
-          scrollTop: 0
-      }, tp/2);
-      return false;
-  }))
-
-  $(window).onbind("scroll", function() {
-      var scroll = $(window).scrollTop();
-      if (scroll > 300) {
-         $(".scroltop").fadeIn(1000);
-      } else {
-          $(".scroltop").fadeOut(1000);
-      }
-  });
-
+    $("html, body").animate({
+      scrollTop: $(".scroltop").offset().top
+  }, 500);  
   }
+
+  let navigate = useNavigate()
 
   function logOutAndNavToHome() {
 
@@ -54,13 +43,13 @@ export default function Layout({getUserData,currentUser,logOut}) {
         <div className="header-search-nav  rounded-2 m-auto col-lg-5">
      <div className="input-group search-input" >
      <div className="category">
-     <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+     <div className="dropdown">
+  <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
   Choose Category
   </button>
-  <ul class="dropdown-menu">
-    <li className='cursor-pointer' onClick={navigateToBooks}><a class="dropdown-item">Books</a></li>
-    <li className='cursor-pointer' onClick={navigateToCourses}><a class="dropdown-item" >Courses</a></li>
+  <ul className="dropdown-menu">
+    <li className='cursor-pointer' onClick={navigateToBooks}><a className="dropdown-item">Books</a></li>
+    <li className='cursor-pointer' onClick={navigateToCourses}><a className="dropdown-item" >Courses</a></li>
   </ul>
 </div>
 </div>
@@ -142,7 +131,11 @@ export default function Layout({getUserData,currentUser,logOut}) {
         </div>
       </div>
     </div>
-    <button className="scroltop"  type="button" ><i className="fas fa-arrow-up"></i></button>
-
+    
+    <div>
+      <div style={{ marginTop: "150vh", color:"white" }} />
+      <ScrollToTop smooth className="scroltop" />
+    </div>
   </>
 }
+

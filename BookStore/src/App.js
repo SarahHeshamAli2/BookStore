@@ -20,6 +20,7 @@ import ProfilePicture from './Components/ProfilePicture/ProfilePicture';
 import CartProvider, { CartContext } from './Components/Context/CartContext';
 import EmptyCart from './Components/EmptyCart/EmptyCart';
 import Checkout from './Components/Checkout/Checkout'
+import ShowCourses from './Components/Showbook/ShowCourses';
 
 export default function App() {
   
@@ -71,6 +72,8 @@ export default function App() {
     {path:'Signup',element: <PopUpProvider><Signup /></PopUpProvider>},
 
     {path:'Showbook/:id',element:<CartProvider><Showbook /></CartProvider>},
+    {path:'ShowCourses/:id',element:<CartProvider><ShowCourses /></CartProvider>},
+
       {path:'*',element:<h2>Error404</h2>}]}  ])
   return<>
   <ToastContainer/>
