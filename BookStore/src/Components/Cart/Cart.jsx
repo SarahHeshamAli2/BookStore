@@ -52,9 +52,9 @@ useLayoutEffect(()=>{
                                 </thead>
                                 <tbody>
                                     {cartItems?.map((cartItem, ind) => <tr key={ind}>
-                                        <td className="product-item-img"><img src={require("../../images/book3.jpg")} alt="" /></td>
-                                        <td className="product-item-">Book</td>
-                                        <td className="product-item-name">Battle Drive</td>
+                                        <td className="product-item-img"><img src={cartItem.imageCover.slice(19)} alt={cartItem.productName}/></td>
+                                        <td className="product-item-">{cartItem.isCourseOrBook}</td>
+                                        <td className="product-item-name">{cartItem.productName}</td>
                                         <td className="product-item-price">${Math.round(cartItem.price)}</td>
                                         <td className="product-item-quantity">
                                             <div className="quantity btn-quantity style-1 me-3">

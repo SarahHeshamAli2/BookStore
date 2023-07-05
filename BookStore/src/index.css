@@ -734,3 +734,11 @@ input[type=number] {
   top: 20%;
   left: 80%;
 }
+/********/
+.row {
+  
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px !important;
+
+}

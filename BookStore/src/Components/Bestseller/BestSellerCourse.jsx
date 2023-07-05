@@ -11,7 +11,7 @@ export default function BestSellerCourse(){
   const [BestSeller, setBestSeller]=useState([])
   async function getBestSeller(){
 
-  let{data}=await axios.get(`https://booklandstore.onrender.com/bestseller/bestproducts`)
+  let{data}=await axios.get(`https://booklandstore.onrender.com/bestseller/bestcourses`)
   setBestSeller(data);
   console.log(data.data);
   }
@@ -25,7 +25,7 @@ export default function BestSellerCourse(){
          <div className="section-head text-center">
          <h2>Best Selling Cources</h2>
          </div>
-         <div className="section-content d-flex"> 
+         <div className="section-content d-flex "> 
     { BestSeller.map(function(product, idx){
       return product.isCourseOrBook === "Course"?
     <div key={idx} className="col-md-3">

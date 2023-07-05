@@ -17,7 +17,6 @@
 .font1 h1{
       color: #fff;
       font-family: 'Agdasima', sans-serif;
-
       font-size: 250px;
   }
 .font1 p{
@@ -32,8 +31,7 @@
   .font2 .layout {
     background-color: #120d5c;
     border-radius: 50%;
-    height: 615px;
-    width: 615px;
+
     left: 50%;
     opacity: .8;
     position: absolute;
@@ -41,9 +39,6 @@
   } 
   .font2 .layout img{
         border-style: none;
-        height: 612px;
-        max-width: 100%;
-        vertical-align: middle;
         opacity: 1;
         position: relative;
       

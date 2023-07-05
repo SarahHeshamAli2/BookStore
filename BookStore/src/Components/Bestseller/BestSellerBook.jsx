@@ -12,7 +12,7 @@ export default function BestSellerBook() {
   const [BestSeller, setBestSeller]=useState([])
   async function getBestSeller(){
 
-  let{data}=await axios.get(`https://booklandstore.onrender.com/bestseller/bestproducts`)
+  let{data}=await axios.get(`https://booklandstore.onrender.com/bestseller/bestbooks`)
   setBestSeller(data);
   console.log(data.data);
   }
@@ -27,13 +27,13 @@ return  <>
          <div className="section-head text-center">
          <h2>Best Selling Books</h2>
          </div>
-         <div className="section-content d-flex"> 
+         <div className="section-content d-flex "> 
     { BestSeller.map(function(product, idx){
       return product.isCourseOrBook === "Book"?
     <div key={idx} className="col-md-3">
            <div>
 
-<div className="item text-center">
+<div className="item text-center  ">
     <Link  to= {`/Showbook/${product._id}`}>
     <img src={product.imageCover.slice(19)} alt={product.productName} />
      <h3 className="h6 fw-bolder text-center pt-3">
