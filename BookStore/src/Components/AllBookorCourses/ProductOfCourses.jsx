@@ -8,8 +8,8 @@ import $ from "jquery"
 
 import { cartContext } from "../Context/CartContext";
 export default function ProductsOfCourses(){
-    const {addToCart,getAllPrducts,allProducts} = useContext(cartContext)
-    const [visible, setVisible] = useState(12)
+    const {addToCart,getAllPrducts,allProducts,reverse,sortingFromAtoZ,sortingFromHighToLow,sortingFromLowToHigh} = useContext(cartContext)
+    const [visible, setVisible] = useState(11)
 
 
     function scrollUp () {
@@ -24,7 +24,7 @@ export default function ProductsOfCourses(){
     },[]);
 
     const showMoreItems = () => {
-        setVisible((prevValue)=> prevValue+4)
+        setVisible((prevValue)=> prevValue+5)
         
       }
   
@@ -62,10 +62,10 @@ export default function ProductsOfCourses(){
          Filter
           </button>
           <ul className="dropdown-menu   ">
-            <li className='cursor-pointer'><Link className="dropdown-item">A to Z</Link></li>
-            <li className='cursor-pointer'><Link className="dropdown-item">Z to A</Link></li>
-            <li className='cursor-pointer'><Link className="dropdown-item">High to LOW</Link></li>
-            <li className='cursor-pointer'><Link className="dropdown-item">LOW to High </Link></li>
+            <li onClick={sortingFromAtoZ} className='cursor-pointer'><Link className="dropdown-item">A to Z</Link></li>
+            <li onClick={reverse} className='cursor-pointer'><Link className="dropdown-item">Z to A</Link></li>
+            <li onClick={sortingFromHighToLow} className='cursor-pointer'><Link className="dropdown-item">High to LOW</Link></li>
+            <li onClick={sortingFromLowToHigh} className='cursor-pointer'><Link className="dropdown-item">LOW to High </Link></li>
 
           </ul>
         </div>

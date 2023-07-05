@@ -10,6 +10,46 @@ export const cartContext = createContext()
 export default function CartProvider({children}) {
     const [allProducts , setAllProducts]=useState(null);
     const [catgegory , setCategory]=useState(null);
+    const [productName , setProductName]=useState(null);
+    function sortingFromAtoZ () {
+        const trial = allProducts.sort((a, b) => {
+            if (a.productName < b.productName) return -1
+            return a.productName > b.productName ? 1 : 0
+          })
+          setAllProducts(trial)
+          console.log(trial);
+
+        }
+      
+    function reverse () {
+
+        let trial = allProducts.sort((a, b) => {
+            if (a.productName > b.productName) return -1
+            return a.productName < b.productName ? 1 : 0
+          })
+          setAllProducts(trial)
+          console.log(trial);
+
+        }
+      
+      function sortingFromHighToLow() {
+        let trial = allProducts.sort((a, b) => {
+            if (a.price > b.price) return -1
+            return a.price < b.price ? 1 : 0
+          })
+          setAllProducts(trial)
+          console.log(trial);
+      }
+
+      function sortingFromLowToHigh() {
+        let trial = allProducts.sort((a, b) => {
+            if (a.price < b.price) return -1
+            return a.price > b.price ? 1 : 0
+          })
+          setAllProducts(trial)
+          console.log(trial);
+
+      }
 
     async function getAllPrducts(){
 
@@ -142,7 +182,7 @@ async function updateCartItemsQuantity(id,count) {
 
 
 }
-return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart,deleteSpecItem,getAllPrducts,allProducts,catgegory,cartId}} >
+return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart,deleteSpecItem,getAllPrducts,allProducts,catgegory,cartId,sortingFromAtoZ,productName,reverse,sortingFromHighToLow,sortingFromLowToHigh}} >
 
 
 {children}
