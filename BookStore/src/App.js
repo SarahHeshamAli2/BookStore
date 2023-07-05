@@ -21,6 +21,7 @@ import CartProvider, { CartContext } from './Components/Context/CartContext';
 import EmptyCart from './Components/EmptyCart/EmptyCart';
 import Checkout from './Components/Checkout/Checkout'
 import ShowCourses from './Components/Showbook/ShowCourses';
+import AllOrders from './Components/AllOrder/AllOrder';
 
 export default function App() {
   
@@ -68,7 +69,7 @@ export default function App() {
     {path:'Checkout',element:<CartProvider><Checkout/></CartProvider>},
     {path:'profile',element:<CartProvider><Profile /></CartProvider>},
     {path:'emptycart',element:<EmptyCart />},
-    {path:'trial',element:<ProfilePicture />},
+    {path:'allOrder',element:<AllOrders />},
     {path:'Signup',element: <PopUpProvider><Signup /></PopUpProvider>},
 
     {path:'Showbook/:id',element:<CartProvider><Showbook /></CartProvider>},

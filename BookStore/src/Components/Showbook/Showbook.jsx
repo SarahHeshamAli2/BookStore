@@ -19,8 +19,6 @@ export default function Showbook() {
 useEffect(()=>{
 
 getProudctDetails()
-showComment()
-
 
 },[])
 
@@ -36,7 +34,6 @@ showComment()
     }
   }
 
-
   async function addComment() {
     setLoading(true)
     try {
@@ -47,9 +44,13 @@ showComment()
         "product": id
       })
       setLoading(false)
-      if (response.status = 200) {
 
-        console.log(response);
+      if (response.status = 200) {
+ 
+        console.log(response.data);
+
+
+
         $("#commentSec").val("")
         $(".postedComment").fadeIn(500, function () {
           setTimeout(() => {
@@ -60,15 +61,22 @@ showComment()
 
     } catch (error) {
       console.log("error", error)
+      setLoading(false)
     }
 
 }
 async function showComment() {
-  const {data} = await axios.get(`https://booklandstore.onrender.com/review/getcomments/`,{
-    "type":"Comment",
-    "productId":"64a2bde69b7e73a82251ce74"
-} )
-console.log(data);
+try {
+  const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments/`,{
+    params : {
+      "type":"Comment",
+      "productId":"64a2db339b7e73a82251d05b"
+    } 
+  } )
+  console.log(response);
+} catch (error) {
+ console.log("error",error); 
+}
 }
 
    return <>
