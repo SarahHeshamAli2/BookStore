@@ -9,7 +9,7 @@ import $ from "jquery"
 import { cartContext } from "../Context/CartContext";
 export default function Products(){
     const {addToCart,getAllPrducts,allProducts} = useContext(cartContext)
-    const [visible, setVisible] = useState(12)
+    const [visible, setVisible] = useState(4)
 
 
     function scrollUp () {
