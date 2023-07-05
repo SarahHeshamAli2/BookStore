@@ -58,8 +58,8 @@ return <>
         <Link to={`/Showbook/${item.product._id}`}>
         <div className="inner d-flex align-items-center">
         <div>
-            {console.log(item.product.imageCover.slice(19))}
-        <img  src={item.product.imageCover.slice(19)} alt="" style={{borderRadius: "5px" , height : "300px" , width : "95%"}} />
+            {console.log(item.product.imageCover.slice(76))}
+        <img  src={item.product.imageCover.slice(76)} alt="" style={{borderRadius: "5px" , height : "300px" , width : "85%"}} />
         </div>
         <div className='mx-2'>
 
