@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap');
+
+.home{
+    background-color: #060340 !important;
+    width:100% !important;
+    position: relative;
+  }
+  .home img{
+      width:100%;
+      opacity: 0.07;
+      height: 80%;
+  }
+  .content{
+      position: absolute;
+      top:0;
+  }
+.font1 h1{
+      color: #fff;
+      font-family: 'Agdasima', sans-serif;
+
+      font-size: 250px;
+  }
+.font1 p{
+      color: #fff;
+      font-family: 'Agdasima', sans-serif;
+
+      font-size: 50px;
+  }
+
+
+
+  .font2 .layout {
+    background-color: #120d5c;
+    border-radius: 50%;
+    height: 615px;
+    width: 615px;
+    left: 50%;
+    opacity: .8;
+    position: absolute;
+  
+  } 
+  .font2 .layout img{
+        border-style: none;
+        height: 612px;
+        max-width: 100%;
+        vertical-align: middle;
+        opacity: 1;
+        position: relative;
+      
+  }
+ 
+  
+ 
+ 
+ 

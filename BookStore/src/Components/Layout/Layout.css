@@ -30,6 +30,7 @@ footer .footer-bottom {
       border-color: rgba(255, 255, 255, 0.1);
       color: rgba(255, 255, 255, 0.5); }
     }
+    /* scrol**/
 .scroltop {
     background: #EAA451;
     border-color: #EAA451;
@@ -111,3 +112,25 @@ line-height: 40px;
 .profile-info  span {
     color: #EAA451 !important;
 }
+/*************search***/
+.category select{
+  height: 50px;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  
+  }
+  .header-search-nav{
+    padding-top: 17px !important;
+  }
+  .header-search-nav .iin{
+    height: 50px !important;
+    width:400px !important;
+    background-color: #f5f5f5;
+    border: transparent;
+  }
+  
+  .header-search-nav  .seabtn{
+    background-color:#EAA451 !important;
+  color: #fff;
+  }
+  

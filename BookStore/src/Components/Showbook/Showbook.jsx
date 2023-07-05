@@ -41,8 +41,6 @@ export default function Showbook() {
       console.log("error", error)
     }
 
-<<<<<<< HEAD
-=======
 }
 async function showComment() {
   const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments/`,{
@@ -61,7 +59,6 @@ console.log(data.data);
   } catch (error) {
     console.log('Error :',error);
     
->>>>>>> 5da0c7898bf412b8df75ab31a204ce63f17e4c4e
   }
   async function showComment() {
     const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments`, {
@@ -82,13 +79,9 @@ console.log(data.data);
 
     }
   }
-  useEffect(function () {
-    getProudctDetails()
-
-
-
-  }, [])
-  return <>
+ // useEffect(()=>{
+  //  getProudctDetails()    },[])
+   return <>
     {productDetails ? <div className="page-content bg-grey">
       <section className="content-inner-1">
         <div className="container">
@@ -170,16 +163,16 @@ console.log(data.data);
               <div className="product-description tabs-site-button">
                 <ul className="nav nav-tabs">
                   <li>
-                    <Link data-bs-toggle="tab" to="#graphic-design-1" className="active">Auther</Link>
+                    <Link data-bs-toggle="tab" to="#graphic-design-1" className="active">Authers</Link>
                   </li>
                   <li>
                     <Link data-bs-toggle="tab" to="#developement-1" className="">Reviews</Link>
                   </li>
                   <li>
-                    <Link data-bs-toggle="tab" to="#developement-2" className="">Table of content</Link>
+                    <Link data-bs-toggle="tab" to="#developement-2" className="">Table of contents</Link>
                   </li>
                   <li>
-                    <Link data-bs-toggle="tab" to="#developement-3" className="">Sample of chapter</Link>
+                    <Link data-bs-toggle="tab" to="#developement-3" className="">Sample Chapter</Link>
                   </li>
                 </ul>
                 <div className="tab-content">
@@ -289,5 +282,5 @@ console.log(data.data);
       </section>
     </div> : <LoadingScreen />}
 
-  </>
+  </>}
 }

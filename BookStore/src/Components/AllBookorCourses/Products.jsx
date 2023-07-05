@@ -4,15 +4,29 @@ import React, { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import './Products.css'
+import $ from "jquery"
+
 import { cartContext } from "../Context/CartContext";
 export default function Products(){
     const {addToCart,getAllPrducts,allProducts} = useContext(cartContext)
+    const [visible, setVisible] = useState(8)
 
 
 
     useEffect(function(){
         getAllPrducts()
     },[]);
+
+    const showMoreItems = () => {
+        setVisible((prevValue)=> prevValue+4)
+        
+      }
+      function scrollUp () {
+
+        $("html, body").animate({
+          scrollTop: $(".fetProducts").offset().top
+      }, 500);  
+      }
 
     return<>
      {allProducts? <div className="container">
@@ -36,13 +50,18 @@ export default function Products(){
                    <div className="text-center"> 
                    <div onClick={function(){addToCart(product._id)}} className="btn btnhover btnhover2 text-white" to=""><i className="flaticon-shopping-cart-1  fa-solid fa-cart-shopping text-white"></i>   Add to cart<i/></div>
                    </div>
+                 
           </div>
+   
           </div>
+      
       </div> : ""  })}
+   
 
-  
+      {visible !== allProducts.length ?     <button onClick={showMoreItems} className='btn btn-primary  w-50 m-auto mt-4'>Load More</button>
+ : <><i onClick={scrollUp} className="fa-solid fa-circle-up fs-3 text-center mt-5 text-primary cursor-pointer"></i></>}
     </div>
-</div> :<LoadingScreen/> } 
+</div> :<LoadingScreen /> } 
         
  
 </>

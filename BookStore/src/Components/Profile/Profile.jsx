@@ -2,27 +2,41 @@ import { Link } from 'react-router-dom';
 import React, { useContext, useEffect, useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 import './profile.css'
+import background from '../../images/bg3.jpg';
 import { cartContext } from '../Context/CartContext';
 import { toast } from 'react-toastify';
 export default function Profile() {
-	useEffect(()=>{getAllPrducts()},[])
+	useEffect(() => { getAllPrducts() }, [])
 
 
 
 	let options = [
-			
+
 		{ label: "web development", value: "web development" },
-		{ label: "AI", value: "AI" },
-		{ label: "JavaScript", value: "JavaScript" },
-	  ];
-	 
+		{ label: "AI&ML", value: "AI&ML" },
+	];
 
 
 
-		const [selected, setSelected] = useState([]);
-		const {getAllPrducts,allProducts,catgegory} = useContext(cartContext)
+
+	const [selected, setSelected] = useState([]);
+	const { getAllPrducts, allProducts, catgegory } = useContext(cartContext)
 	const userName = localStorage.getItem("userName")
 	return <>
+  <div className="dz-bnr-inr overlay-secondary-dark dz-bnr-inr-sm" style={{backgroundImage:
+    `${process.env.PUBLIC_URL+ background})`}}>
+      <div className="container">
+        <div className="dz-bnr-inr-entry">
+          <h1>Profile</h1>
+          <nav aria-label="breadcrumb" className="breadcrumb-row">
+            <ul className="breadcrumb">
+              <li className="breadcrumb-item"><Link to="/home"> Home</Link></li>
+              <li className="breadcrumb-item">Profile</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
 	
 		<div className="  bg-white">
 			<div className="content-block">
@@ -77,7 +91,7 @@ export default function Profile() {
 									<div className="col-lg-6 col-md-6">
 										<div className="mb-3">
 											<label htmlFor="formcontrolinput8" className="form-label">Your Name:</label>
-											<input type="text" className="form-control" id="formcontrolinput8" placeholder= {localStorage.getItem("userName")} />
+											<input type="text" className="form-control" id="formcontrolinput8" placeholder={localStorage.getItem("userName")} />
 										</div>
 									</div>
 									<div className="col-lg-6 col-md-6">
@@ -109,18 +123,18 @@ export default function Profile() {
 										<div className="mb-4 ">
 											<label htmlFor="formcontrolinput10" className="form-label">Favourite list:</label>
 											<div>
-      <MultiSelect
-        options={options}
-        value={selected}
-        onChange={setSelected}
-        labelledBy="Select"
-	
-      />
-    </div>
+												<MultiSelect 
+												options={options}
+												value={selected}
+												onChange={setSelected}
+												labelledBy="Select"
+
+												/>
+											</div>
 										</div>
 									</div>
 								</div>
-								<button onClick={function(){toast.success("info updated successfully")}} className="btn btn-primary btnhover">Save Setting</button>
+								<button onClick={function () { toast.success("info updated successfully") }} className="btn btn-primary btnhover">Save Setting</button>
 							</div>
 						</div>
 					</div>

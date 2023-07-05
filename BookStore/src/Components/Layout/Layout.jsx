@@ -39,13 +39,32 @@ export default function Layout({getUserData,currentUser,logOut}) {
   return <>
     <header className="site-header header style-1">
   
-    <div className="header-info-bar">
-      <div className="container clearfix mo-left ">
-        <div className="logo-header logo-dark ms-md-5">
+    <div className="header-info-bar row ">
+      <div className="container clearfix mo-left  d-flex">
+        <div className="logo-header logo-dark ms-md-5 col-lg-4">
           <Link to="/home"><img src={require('../../images/logo1.png')} alt="logo" /></Link>
         </div>
+        <div className="header-search-nav  rounded-2 m-auto col-lg-5">
+     <div className="input-group search-input" >
+     <div className="category">
+    <form>    
+    <select name="filter" id="" className='nav-item dropdown-item '>
+      <option className='dropdown-menu'>Choose  category</option>
+        <option value=""  className=''>Books</option>
+         <option value="" className=''>Cources</option>
+    </select>
+    </form>
+</div>
+           <input type="text" 
+           aria-label="Text input with dropdown button"
+            placeholder="Search Books Here"
+            className='iin'
+            />
+          <button className="btn seabtn" type="button"><i className="fa-solid fa-magnifying-glass"></i></button>
+         </div>
+    </div>
     {currentUser ? 
-        <div className="extra-nav">
+        <div className="extra-nav  col-lg-1 m-auto ">
           <div className="extra-cell">
             <ul className="navbar-nav header-right">
               <li className="nav-item dropdown profile-dropdown ms-4">
