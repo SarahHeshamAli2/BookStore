@@ -2,6 +2,7 @@ import axios, { all } from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
+import EmptyCart from '../EmptyCart/EmptyCart';
 
 export default function AllOrders({currentUser}) {
 const [allOrder, setallOrder] = useState(null)
@@ -39,7 +40,7 @@ try {
     }
 return <> 
 {loading ? <LoadingScreen/> : <div className='my-5 py-5 container'>
-    <h2>Your Orders</h2>
+    {allOrder?.length == 0 ? <EmptyCart/> : <> <h2>Your Orders</h2>
 {allOrder?.map((order,ind)=> <div className="row g-5 align-items-center border border-1 my-2 rounded-1" key={ind}>
 
 <div className="col-md-3">
@@ -74,7 +75,8 @@ return <>
 }
 
 
-</div>)}
+</div>)}</>}
+   
 
 
 </div> }
