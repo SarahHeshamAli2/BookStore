@@ -24,7 +24,7 @@ export default function Products(){
     },[]);
 
     const showMoreItems = () => {
-        setVisible((prevValue)=> prevValue+4)
+        setVisible((prevValue)=> prevValue*4)
         
       }
   
@@ -55,7 +55,7 @@ export default function Products(){
     return<>
      {allProducts? <div className="container fetProducts">
       <div className="row">
-      <h2 className="text-center my-5">Books At Bookland</h2>
+      <h2 className="text-center my-5 test">Books At Bookland</h2>
  {displayProducts}   
  {console.log(allProducts?.length,visible)}
 

@@ -31,6 +31,7 @@ export default function CartProvider({children}) {
     const [numberOfCartItems, setNumberOfCartItems] = useState(null)
     const [totalCartPrice, settotalCartPrice] = useState(null)
     const [load, setLoad] = useState(false)
+    const [cartId, setCartId] = useState(null)
     async function clearCart () {
 try {
     const response = await axios.delete(`https://booklandstore.onrender.com/api/v1/cart`,{ headers: {
@@ -105,6 +106,7 @@ async function getCartProds() {
     })
     setLoad(false)
     console.log(data.data);
+    setCartId(data.data._id)
     setNumberOfCartItems(data.numOfCartItems)
     setcartItems(data.data.cartItems)
     settotalCartPrice(data.data.totalCartPrice)
@@ -140,7 +142,7 @@ async function updateCartItemsQuantity(id,count) {
 
 
 }
-return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart,deleteSpecItem,getAllPrducts,allProducts,catgegory}} >
+return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart,deleteSpecItem,getAllPrducts,allProducts,catgegory,cartId}} >
 
 
 {children}
