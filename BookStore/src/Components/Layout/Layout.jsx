@@ -9,12 +9,6 @@ import $ from "jquery"
 
 export default function Layout({getUserData,currentUser,logOut}) {
 
-  function scrollUp () {
-
-    $("html, body").animate({
-      scrollTop: $(".scroltop").offset().top
-  }, 500);  
-  }
 
   let navigate = useNavigate()
 
@@ -40,11 +34,11 @@ export default function Layout({getUserData,currentUser,logOut}) {
         <div className="logo-header logo-dark ms-md-5 col-lg-4">
           <Link to="/home"><img src={require('../../images/logo1.png')} alt="logo" /></Link>
         </div>
-        <div className="header-search-nav  rounded-2 m-auto col-lg-5">
-     <div className="input-group search-input" >
+        <div className="header-search-nav  rounded-2 m-auto col-lg-7">
+     <div className="input-group search-input  d-flex" >
      <div className="category">
-     <div className="dropdown">
-  <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+     <div className="dropdown ">
+  <button className="btn btn-secondary dropdown-toggle catsize text-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
   Choose Category
   </button>
   <ul className="dropdown-menu">
@@ -133,7 +127,7 @@ export default function Layout({getUserData,currentUser,logOut}) {
     </div>
     
     <div>
-      <div style={{ marginTop: "150vh", color:"white" }} />
+      <div style={{  color:"white" }} />
       <ScrollToTop smooth className="scroltop" />
     </div>
   </>

@@ -93,7 +93,7 @@ useLayoutEffect(()=>{
 
                 <div className="row">
 
-                    <div className="col-lg-12">
+                    <div className="col-lg-12 py-5">
                         <div className="widget">
                             <h4 className="widget-title">Cart total</h4>
                             <table className="table-bordered check-tbl m-b25">
@@ -106,7 +106,7 @@ useLayoutEffect(()=>{
                                     </tr>
                                 </tbody>
                             </table>
-                            <div className="form-group m-b25 ">
+                            <div className="form-group m-b25 py-3 ">
                                 <Link to="/Checkout" className="btn btn-primary btnhover btnhover2  text-white " type="button">Checkout</Link>
                             </div>
                         </div>

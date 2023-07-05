@@ -58,18 +58,17 @@ export default function Checkout() {
     </div>
         <div className=" container col-lg-8  mt-5 ">
             <form id='myForm' className="shop-form widget" >
-                <h4 className="widget-title mt-5">Order Total</h4>
-                     <table classNameName="table-bordered check-tbl m-b25">
+            <h4 className="widget-title mt-5">Order Total</h4>
+                            <table className="table-bordered check-tbl m-b25">
                                 <tbody>
 
 
                                     <tr>
                                         <td>Total</td>
-                                        <td id='totalPrice'>{totalCartPrice} $</td>
+                                        <td id='totalPrice'>{Math.round(totalCartPrice)} $</td>
                                     </tr>
                                 </tbody>
                             </table>
-                   
                    
                    <h4 className="widget-title mt-5">Payment </h4>
                    <div  className="form-group undefined"><input required type="text" className="form-control" placeholder="Name " /></div>

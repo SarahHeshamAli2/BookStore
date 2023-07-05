@@ -34,9 +34,9 @@ export default function ProductsOfCourses(){
 
       <div className="item">
           <Link  to= {`/ShowCourses/${product._id}`}>
-          <img src={product.imageCover.slice(19)} alt={product.productName} />
+          <img src={product.imageCover.slice(76)} alt={product.productName} />
            <h3 className="h6 fw-bolder text-center pt-3">
-              {product.productName.slice(0,product.productName.indexOf('',30))}</h3>
+              {product.productName.slice(0,product.productName.indexOf('',26))}</h3>
               <p className=" text-center text-muted ">{product.price}$</p>
                <span className=" text-center">
                 <i className="fas fa-star"></i>{product.ratingsAverage}
@@ -56,6 +56,20 @@ export default function ProductsOfCourses(){
      {allProducts? <div className="container fetProducts">
       <div className="row">
       <h2 className="text-center my-5">Courses At Bookland</h2>
+      <div className="    d-flex align-items-end justify-content-end ">
+        <div className="dropdown  sss">
+          <button className="btn btn-secondary dropdown-toggle  d-flex justify-content-end align-items-end" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+         Filter
+          </button>
+          <ul className="dropdown-menu   ">
+            <li className='cursor-pointer'><Link className="dropdown-item">A to Z</Link></li>
+            <li className='cursor-pointer'><Link className="dropdown-item">Z to A</Link></li>
+            <li className='cursor-pointer'><Link className="dropdown-item">High to LOW</Link></li>
+            <li className='cursor-pointer'><Link className="dropdown-item">LOW to High </Link></li>
+
+          </ul>
+        </div>
+      </div>
  {displayProducts}   
  {console.log(allProducts?.length,visible)}
 
