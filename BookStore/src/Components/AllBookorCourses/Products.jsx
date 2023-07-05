@@ -9,7 +9,7 @@ import $ from "jquery"
 import { cartContext } from "../Context/CartContext";
 export default function Products(){
     const {addToCart,getAllPrducts,allProducts} = useContext(cartContext)
-    const [visible, setVisible] = useState(8)
+    const [visible, setVisible] = useState(4)
 
 
     function scrollUp () {
@@ -24,7 +24,7 @@ export default function Products(){
     },[]);
 
     const showMoreItems = () => {
-        setVisible((prevValue)=> prevValue+4)
+        setVisible((prevValue)=> prevValue*4)
         
       }
   

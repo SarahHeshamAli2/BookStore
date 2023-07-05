@@ -64,7 +64,7 @@ export default function App() {
     {path:'cart',element:<CartProvider><Cart /></CartProvider>},
     {path:'Products',element:<CartProvider><Products /></CartProvider>},
     {path:'ProductOfCourses',element:<CartProvider><ProductOfCourses /></CartProvider>},
-    {path:'Checkout',element:<Checkout/>},
+    {path:'Checkout',element:<CartProvider><Checkout/></CartProvider>},
     {path:'profile',element:<CartProvider><Profile /></CartProvider>},
     {path:'emptycart',element:<EmptyCart />},
     {path:'trial',element:<ProfilePicture />},
