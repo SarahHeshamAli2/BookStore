@@ -734,3 +734,6 @@ input[type=number] {
   top: 20%;
   left: 80%;
 }
+.navbar {
+z-index: 50000000;
+}

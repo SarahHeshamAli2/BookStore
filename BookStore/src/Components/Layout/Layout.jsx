@@ -35,6 +35,13 @@ export default function Layout({getUserData,currentUser,logOut}) {
     navigate("/home")
 
   }
+  function navigateToBooks() {
+    navigate("/products")
+  }
+  function navigateToCourses() {
+    navigate("/productOfCourses")
+
+  }
 
   return <>
     <header className="site-header header style-1">
@@ -47,13 +54,15 @@ export default function Layout({getUserData,currentUser,logOut}) {
         <div className="header-search-nav  rounded-2 m-auto col-lg-5">
      <div className="input-group search-input" >
      <div className="category">
-    <form>    
-    <select name="filter" id="" className='nav-item dropdown-item '>
-      <option className='dropdown-menu'>Choose  category</option>
-        <option value=""  className=''>Books</option>
-         <option value="" className=''>Cources</option>
-    </select>
-    </form>
+     <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  Choose Category
+  </button>
+  <ul class="dropdown-menu">
+    <li className='cursor-pointer' onClick={navigateToBooks}><a class="dropdown-item">Books</a></li>
+    <li className='cursor-pointer' onClick={navigateToCourses}><a class="dropdown-item" >Courses</a></li>
+  </ul>
+</div>
 </div>
            <input type="text" 
            aria-label="Text input with dropdown button"

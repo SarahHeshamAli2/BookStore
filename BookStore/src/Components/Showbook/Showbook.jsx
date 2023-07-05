@@ -16,6 +16,27 @@ export default function Showbook() {
   const [tableContent, setTableContent] = useState(null);
   const [loading, setLoading] = useState(false);
 
+useEffect(()=>{
+
+getProudctDetails()
+showComment()
+
+
+},[])
+
+  async function getProudctDetails() {
+    try {
+      const { data } = await axios.get(`https://booklandstore.onrender.com/api/v1/products/${id}`)
+      setProductDetails(data.data)
+      setTableContent(data.data.tableOfContent)
+
+    } catch (error) {
+      console.log('Error :', error);
+
+    }
+  }
+
+
   async function addComment() {
     setLoading(true)
     try {
@@ -43,44 +64,13 @@ export default function Showbook() {
 
 }
 async function showComment() {
-  const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments/`,{
+  const {data} = await axios.get(`https://booklandstore.onrender.com/review/getcomments/`,{
     "type":"Comment",
     "productId":"64a2bde69b7e73a82251ce74"
 } )
-console.log(response);
+console.log(data);
 }
-async function getProudctDetails(){
-  try {
-    const {data}= await axios.get(`https://booklandstore.onrender.com/api/v1/products/${id}`)
-    setProductDetails(data.data)
-setTableContent(data.data.tableOfContent)
-console.log(data.data);
 
-  } catch (error) {
-    console.log('Error :',error);
-    
-  }
-  async function showComment() {
-    const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments`, {
-      "type": "Comment",
-      "productId": "64a2da2f9b7e73a82251d043"
-    })
-    console.log(response);
-  }
-  async function getProudctDetails() {
-    try {
-      const { data } = await axios.get(`https://booklandstore.onrender.com/api/v1/products/${id}`)
-      setProductDetails(data.data)
-      setTableContent(data.data.tableOfContent)
-      console.log(data.data);
-
-    } catch (error) {
-      console.log('Error :', error);
-
-    }
-  }
- // useEffect(()=>{
-  //  getProudctDetails()    },[])
    return <>
     {productDetails ? <div className="page-content bg-grey">
       <section className="content-inner-1">
@@ -283,4 +273,4 @@ console.log(data.data);
     </div> : <LoadingScreen />}
 
   </>}
-}
+
