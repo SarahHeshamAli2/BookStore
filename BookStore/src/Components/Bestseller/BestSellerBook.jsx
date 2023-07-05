@@ -1,13 +1,12 @@
-import {React,useState,useEffect,useContext} from "react";
 import axios from 'axios'
-import LoadingScreen from "../LoadingScreen/LoadingScreen";
-import '../AllBookorCourses/Products.css'
-import { Link } from "react-router-dom";
+import {React,useState,useEffect,useContext} from "react";
 import { cartContext } from "../Context/CartContext";
-
+import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import { Link } from "react-router-dom";
+import '../AllBookorCourses/Products.css'
 // import { data } from "jquery";
-export default function BestSellerBook() {
-  const {addToCart,getAllPrducts,allProducts} = useContext(cartContext)
+export default function BestSellerBook(){
+    const {addToCart,getAllPrducts,allProducts} = useContext(cartContext)
 
   const [BestSeller, setBestSeller]=useState([])
   async function getBestSeller(){
@@ -19,9 +18,8 @@ export default function BestSellerBook() {
   useEffect(()=>{
   getBestSeller();
   },[])
- 
-return  <>
-      {BestSeller? <section className="recommend-books py-5">
+    return<> 
+ {BestSeller?<section className="recommend-courses py-5">
         <div className="container">
          <div className="row">
          <div className="section-head text-center">
@@ -31,13 +29,13 @@ return  <>
     { BestSeller.map(function(product, idx){
       return product.isCourseOrBook === "Book"?
     <div key={idx} className="col-md-3">
-           <div>
+          <div>
 
 <div className="item text-center  ">
     <Link  to= {`/Showbook/${product._id}`}>
     <img src={product.imageCover.slice(76)} alt={product.productName} />
      <h3 className="h6 fw-bolder text-center pt-3">
-        {product.productName.slice(0,product.productName.indexOf('',25))}</h3>
+        {product.productName.slice(0,product.productName.indexOf('',30))}</h3>
         <p className=" text-center text-muted ">{product.price}$</p>
          <span className=" text-center">
           <i className="fas fa-star"></i>{product.ratingsAverage}
@@ -55,8 +53,8 @@ return  <>
             </div>
             </div>
             <div className="text-center"> 
-         <Link  className="btn btnhover btnhover2 text-white w-25 mt-5" to="/Products"><i className="flaticon-shopping-cart-1  fa-solid fa-cart-shopping text-white"></i>   Go To All Books<i/></Link>
-         </div>
-            </section> : <LoadingScreen /> } 
+         <Link  className="btn btnhover btnhover2 text-white w-25 mt-5" 
+         to="/ProductOfCourses"><i className="flaticon-shopping-cart-1  fa-solid fa-cart-shopping text-white"></i>   Go To All Courses<i/></Link>
+         </div></section> :<LoadingScreen/> } 
     </>
 }
