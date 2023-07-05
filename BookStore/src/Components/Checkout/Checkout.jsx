@@ -8,7 +8,7 @@ import { cartContext } from '../Context/CartContext';
 import { toast } from 'react-toastify';
 
 export default function Checkout() {
-  const {cartId} = useContext(cartContext)
+  const {cartId,totalCartPrice,cartItems} = useContext(cartContext)
   const [load, setload] = useState(false)
   useEffect(()=> {stopReload()},[])
   async function checkOut() {
@@ -41,7 +41,7 @@ export default function Checkout() {
   }
   
     return <>
-    {console.log(cartId)}
+    {console.log(cartItems)}
      <div className="dz-bnr-inr overlay-secondary-dark dz-bnr-inr-sm" style={{backgroundImage:
     `${process.env.PUBLIC_URL+ background})`}}>
       <div className="container">
@@ -65,7 +65,7 @@ export default function Checkout() {
 
                                     <tr>
                                         <td>Total</td>
-                                        <td id='totalPrice'>0$</td>
+                                        <td id='totalPrice'>{totalCartPrice} $</td>
                                     </tr>
                                 </tbody>
                             </table>
