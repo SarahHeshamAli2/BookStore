@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './checkout.css'
 import background from '../../images/bg3.jpg';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import $ from "jquery"
 import { cartContext } from '../Context/CartContext';
 import { toast } from 'react-toastify';
 
 export default function Checkout() {
+  const navigate =  useNavigate()
   const {cartId,totalCartPrice,cartItems} = useContext(cartContext)
   const [load, setload] = useState(false)
   useEffect(()=> {stopReload()},[])
@@ -23,6 +24,8 @@ export default function Checkout() {
             setTimeout(() => {
               $(".succPayment").fadeOut(2000)
             }, 500);
+            navigate("/orderdone")
+
           })
         }        setload(false)
 

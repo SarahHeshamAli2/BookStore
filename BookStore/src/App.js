@@ -22,6 +22,7 @@ import EmptyCart from './Components/EmptyCart/EmptyCart';
 import Checkout from './Components/Checkout/Checkout'
 import ShowCourses from './Components/Showbook/ShowCourses';
 import AllOrders from './Components/AllOrder/AllOrder';
+import OrderDone from './Components/orderDone/orderDone';
 
 export default function App() {
   
@@ -62,6 +63,7 @@ export default function App() {
 
   },
     {path:'about',element:<About/>},
+    {path:'orderDone',element:<OrderDone/>},
     {path:'contact',element:<Contact/>},
     {path:'cart',element:<CartProvider><Cart /></CartProvider>},
     {path:'Products',element:<CartProvider><Products /></CartProvider>},

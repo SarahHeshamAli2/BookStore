@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import $ from "jquery"
-import axios from "axios";
+import axios, { all } from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import EmptyCart from "../EmptyCart/EmptyCart";
@@ -11,6 +11,7 @@ export default function CartProvider({children}) {
     const [allProducts , setAllProducts]=useState(null);
     const [catgegory , setCategory]=useState(null);
     const [productName , setProductName]=useState(null);
+    const [searchedArray, setsearchedArray] = useState([])
     function sortingFromAtoZ () {
         const trial = allProducts.sort((a, b) => {
             if (a.productName < b.productName) return -1
@@ -20,7 +21,20 @@ export default function CartProvider({children}) {
           console.log(trial);
 
         }
-      
+      function searching () {
+        let term = document.querySelector("#searchingId").value
+        for(let i=0 ;i<allProducts?.length ; i++) {
+
+            if(allProducts[i].productName.toLowerCase().includes(term.toLowerCase())) {
+                setsearchedArray(allProducts[i])
+                console.log(searchedArray);
+                
+                
+            }
+        }
+        
+       
+      }
     function reverse () {
 
         let trial = allProducts.sort((a, b) => {
@@ -182,7 +196,7 @@ async function updateCartItemsQuantity(id,count) {
 
 
 }
-return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart,deleteSpecItem,getAllPrducts,allProducts,catgegory,cartId,sortingFromAtoZ,productName,reverse,sortingFromHighToLow,sortingFromLowToHigh}} >
+return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart,deleteSpecItem,getAllPrducts,allProducts,catgegory,cartId,sortingFromAtoZ,productName,reverse,sortingFromHighToLow,sortingFromLowToHigh,searching,searchedArray}} >
 
 
 {children}

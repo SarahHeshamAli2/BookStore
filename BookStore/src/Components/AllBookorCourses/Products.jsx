@@ -8,7 +8,7 @@ import $ from "jquery"
 
 import { cartContext } from "../Context/CartContext";
 export default function Products(){
-    const {addToCart,getAllPrducts,allProducts,reverse,sortingFromAtoZ,sortingFromLowToHigh,sortingFromHighToLow} = useContext(cartContext)
+    const {addToCart,getAllPrducts,allProducts,reverse,sortingFromAtoZ,sortingFromLowToHigh,sortingFromHighToLow,searching} = useContext(cartContext)
     const [visible, setVisible] = useState(12)
 
 
@@ -61,7 +61,6 @@ export default function Products(){
      {allProducts? <><div className="container fetProducts">
 
           <div className="row ">
-
             <h2 className="text-center my-5 test d-flex justify-content-center align-items-center    ">Books At Bookland  </h2>
             <div className="    d-flex align-items-end justify-content-end ">
         <div className="dropdown  ">

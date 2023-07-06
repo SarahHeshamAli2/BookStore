@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import './Layout.css'
 import $ from "jquery"
+import CartProvider from '../Context/CartContext';
 
 export default function Layout({getUserData,currentUser,logOut}) {
 
@@ -24,6 +25,9 @@ export default function Layout({getUserData,currentUser,logOut}) {
   function navigateToCourses() {
     navigate("/productOfCourses")
 
+  }
+  function search () {
+    console.log("eshta");
   }
 
   return <>
@@ -47,13 +51,9 @@ export default function Layout({getUserData,currentUser,logOut}) {
   </ul>
 </div>
 </div>
-           <input type="text" 
-           aria-label="Text input with dropdown button"
-            placeholder="Search Books Here"
-            className='iin'
-            />
-          <button className="btn seabtn" type="button"><i className="fa-solid fa-magnifying-glass"></i></button>
+          
          </div>
+     
     </div>
     {currentUser ? 
         <div className="extra-nav  col-lg-1 m-auto ">

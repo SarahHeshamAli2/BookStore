@@ -6,7 +6,10 @@ import { cartContext } from '../Context/CartContext'
 
 export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
 
-  const {numberOfCartItems,cartItems} = useContext(cartContext)
+  const {getAllPrducts,searching,searchedArray} = useContext(cartContext)
+  useEffect(()=>{
+    getAllPrducts()
+  },[])
   return <>
   
 <div className="modal fade stylish" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -51,7 +54,6 @@ export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/home">Home</Link>
             </li>
-       
             
 
       {currentUser ?        <li className="nav-item dropdown">
@@ -77,7 +79,17 @@ export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
             <li className="nav-item">
               <Link className="nav-link " aria-current="false" to="/contact">Contact Us</Link>
             </li>
-
+        <div className="searchInput">
+        <input id='searchingId' onChange={function(){searching()}} type="text" 
+           aria-label="Text input with dropdown button"
+            placeholder="Search Books Here"
+            className='iin'
+            />
+          <button className="btn seabtn" type="button"><i className="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div >
+<h2></h2>
+        </div>
           </ul>
           <ul className=' d-flex m-auto align-items-center'>
             {
