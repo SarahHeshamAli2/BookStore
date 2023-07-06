@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useContext, useEffect, useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 import './profile.css'
@@ -6,6 +6,7 @@ import background from '../../images/bg3.jpg';
 import { cartContext } from '../Context/CartContext';
 import { toast } from 'react-toastify';
 export default function Profile() {
+	const navigate = useNavigate()
 	useEffect(() => { getAllPrducts() }, [])
 
 
@@ -16,7 +17,13 @@ export default function Profile() {
 		{ label: "AI&ML", value: "AI&ML" },
 	];
 
-
+function showRecomnd() {
+	toast.success("your information is saved !")
+	localStorage.setItem("profile","pro")
+	setTimeout(() => {
+		navigate("/home")
+	}, 5000);
+}
 
 
 	const [selected, setSelected] = useState([]);
@@ -130,7 +137,7 @@ export default function Profile() {
 										</div>
 									</div>
 								</div>
-								<button onClick={function () { toast.success("info updated successfully") }} className="btn btn-primary btnhover">Save Setting</button>
+								<button onClick={showRecomnd} className="btn btn-primary btnhover">Save Setting</button>
 							</div>
 						</div>
 					</div>

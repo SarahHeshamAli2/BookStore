@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import EmptyCart from '../EmptyCart/EmptyCart';
 import background from '../../images/bg3.jpg';
-
 export default function AllOrders({currentUser}) {
 const [allOrder, setallOrder] = useState(null)
 const [cartItems, setCartItems] = useState(null)

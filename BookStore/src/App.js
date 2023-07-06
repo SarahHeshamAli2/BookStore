@@ -16,13 +16,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PopUpProvider from './Components/Context/PopUpContext';
 import jwtDecode from 'jwt-decode';
-import ProfilePicture from './Components/ProfilePicture/ProfilePicture';
 import CartProvider, { CartContext } from './Components/Context/CartContext';
 import EmptyCart from './Components/EmptyCart/EmptyCart';
 import Checkout from './Components/Checkout/Checkout'
 import ShowCourses from './Components/Showbook/ShowCourses';
 import AllOrders from './Components/AllOrder/AllOrder';
 import OrderDone from './Components/orderDone/orderDone';
+import RecommendBook from './Components/Recommend/RecommendBook';
 
 export default function App() {
   
@@ -72,6 +72,7 @@ export default function App() {
     {path:'profile',element:<CartProvider><Profile /></CartProvider>},
     {path:'emptycart',element:<EmptyCart />},
     {path:'allOrder',element:<AllOrders />},
+    {path:'rec',element:<RecommendBook />},
     {path:'Signup',element: <PopUpProvider><Signup /></PopUpProvider>},
 
     {path:'Showbook/:id',element:<CartProvider><Showbook /></CartProvider>},
