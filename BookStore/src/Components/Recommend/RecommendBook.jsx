@@ -11,13 +11,14 @@ export default function RecommendBook() {
 
 
 
-  const [Recommend, setRecommend]=useState([])
+  const [Recommend, setRecommend]=useState(null)
   const {addToCart,getAllPrducts,allProducts} = useContext(cartContext)
-
+const [load, setload] = useState(false)
 
 
 
   async function getRecommend(){
+      setload(true)
   let{data}=await axios.post(`https://booklandstore.onrender.com/recommendationsystem/recommendation`,
         {
         "groupId":"64a44c9e53cae91c00d95f37"
@@ -25,6 +26,7 @@ export default function RecommendBook() {
   )
   setRecommend(data);
   console.log(data.data);
+  setload(false)
   }
   useEffect(()=>{
   getRecommend();
@@ -36,7 +38,7 @@ export default function RecommendBook() {
 
   return<>
   
-  { Recommend.map(function(product, idx){
+  { Recommend?.map(function(product, idx){
     return product.isCourseOrBook === "Book"?
     <section className="recommend-books py-5">
     <div className="container">
