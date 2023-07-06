@@ -38,7 +38,7 @@ const [load, setload] = useState(false)
 
   return<>
   
-  { Recommend?.map(function(product, idx){
+  { Recommend?.map(function(product, idx1){
     return product.isCourseOrBook === "Book"?
     <section className="recommend-books py-5">
     <div className="container">
@@ -47,7 +47,7 @@ const [load, setload] = useState(false)
      <h2>Recommended Books</h2>
      </div>
      <div className="section-content d-flex"> 
-  <div key={idx} className="col-md-3">
+  <div key={idx1} className="col-md-3">
   <div>
 
 <div className="item">

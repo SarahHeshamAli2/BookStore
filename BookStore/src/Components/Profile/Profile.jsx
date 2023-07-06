@@ -13,7 +13,7 @@ export default function Profile() {
 
 	let options = [
 
-		{ label: "web development", value: "web development" },
+		{ label: "Web development", value: "web development" },
 		{ label: "AI&ML", value: "AI&ML" },
 	];
 

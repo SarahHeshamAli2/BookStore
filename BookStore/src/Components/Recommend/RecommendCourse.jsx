@@ -24,7 +24,7 @@ export default function RecommendCourse() {
  
 return  <>
       
-    { Recommend.map(function(product, idx){
+    { Recommend.map(function(product, idx2){
       return product.isCourseOrBook === "Course"?
       <section className="recommend-books py-5">
       <div className="container">
@@ -33,7 +33,7 @@ return  <>
        <h2>Recommended Courses</h2>
        </div>
        <div className="section-content d-flex"> 
-    <div key={idx} className="col-md-3">
+    <div key={idx2} className="col-md-3">
     <div>
 
 <div className="item">

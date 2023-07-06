@@ -46,8 +46,8 @@ export default function Layout({getUserData,currentUser,logOut}) {
   Choose Category
   </button>
   <ul className="dropdown-menu">
-    <li className='cursor-pointer' onClick={navigateToBooks}><a className="dropdown-item">Books</a></li>
-    <li className='cursor-pointer' onClick={navigateToCourses}><a className="dropdown-item" >Courses</a></li>
+    <li className='cursor-pointer' onClick={navigateToBooks}><a className="dropdown-item">Web development</a></li>
+    <li className='cursor-pointer' onClick={navigateToCourses}><a className="dropdown-item" >AI&ML</a></li>
   </ul>
 </div>
 </div>
