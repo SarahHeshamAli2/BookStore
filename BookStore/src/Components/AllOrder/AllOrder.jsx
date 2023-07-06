@@ -2,8 +2,12 @@ import axios, { all } from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
+<<<<<<< HEAD
 import EmptyCart from '../EmptyCart/EmptyCart';
 
+=======
+import background from '../../images/bg3.jpg';
+>>>>>>> 531418b4568f1594aabefb376a24dca7fca80992
 export default function AllOrders({currentUser}) {
 const [allOrder, setallOrder] = useState(null)
 const [cartItems, setCartItems] = useState(null)
@@ -39,15 +43,29 @@ try {
 }        
     }
 return <> 
+ <div className="dz-bnr-inr overlay-secondary-dark dz-bnr-inr-sm" style={{backgroundImage:
+    `${process.env.PUBLIC_URL+ background})`}}>
+      <div className="container">
+        <div className="dz-bnr-inr-entry">
+          <h1>Your Orders</h1>
+          <nav aria-label="breadcrumb" className="breadcrumb-row">
+            <ul className="breadcrumb">
+              <li className="breadcrumb-item"><Link to="/home"> Home</Link></li>
+              <li className="breadcrumb-item">Your Orders</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
 {loading ? <LoadingScreen/> : <div className='my-5 py-5 container'>
     {allOrder?.length == 0 ? <EmptyCart/> : <> <h2>Your Orders</h2>
 {allOrder?.map((order,ind)=> <div className="row g-5 align-items-center border border-1 my-2 rounded-1" key={ind}>
 
 <div className="col-md-3">
-    <div className="inner-col">
-        <p>Placed On: <span className='mx-2 fw-bolder'>{order.createdAt.slice(0,10)}</span></p>
-        <p>Total price: <span className='mx-2  fw-bolder'>{order.totalOrderPrice} </span> $</p>
-        <span>Payment method : <span className='mx-2  fw-bolder'>{order.paymentMethodType}</span></span>
+    <div className="inner-col   fs-5">
+        <p className='fw-bolder'>Placed On: <span className='mx-2 fw-lighter text-main'>{order.createdAt.slice(0,10)}</span></p>
+        <p className='fw-bolder'>Total price: <span className='mx-2 fw-lighter text-main'>{Math.round(order.totalOrderPrice)} $</span> </p>
+        <span className='fw-bolder'>Payment method : <span className='mx-2  fw-lighter text-main'>{order.paymentMethodType}</span></span>
        
 
     </div>
@@ -60,12 +78,12 @@ return <>
         <div className="inner d-flex align-items-center">
         <div>
             {console.log(item.product.imageCover.slice(76))}
-        <img  src={item.product.imageCover.slice(76)} alt="" style={{borderRadius: "5px" , height : "300px" , width : "85%"}} />
+        <img  src={item.product.imageCover.slice(76)} alt="" style={{borderRadius: "5px" , height : "200px" , width : "70%" }} />
         </div>
         <div className='mx-2'>
 
 
-            <h5 className='small fw-bolder text-primary'>${item.price} </h5>
+            <h5 className='small fw-bolder text-primary fs-4'>${Math.round( item.price)} </h5>
         </div>
         
     </div>

@@ -742,3 +742,9 @@ input[type=number] {
   margin: 0px !important;
 
 }
+.text-primary{
+  color: #EAA451 !important;
+}
+.text-main{
+  color: #1a1668;
+}

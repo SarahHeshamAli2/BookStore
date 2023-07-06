@@ -7,6 +7,8 @@ import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import '../AllBookorCourses/Products.css'
 import { Link } from "react-router-dom";
 import { cartContext } from "../Context/CartContext";
+import RecommendBook from "../Recommend/RecommendBook";
+import RecommendCourse from "../Recommend/RecommendCourse";
 export default function Home() {
   const {addToCart,getAllPrducts,allProducts} = useContext(cartContext)
 
@@ -84,7 +86,10 @@ export default function Home() {
          <Link  className="btn btnhover btnhover2 text-white w-25 mt-5" to="/Products"><i className="flaticon-shopping-cart-1  fa-solid fa-cart-shopping text-white"></i>   Go To All Books<i/></Link>
          </div>
             </section>
-      <BestSellerCourse /> </>}
+      <BestSellerCourse /> 
+      <RecommendBook />
+      <RecommendCourse />
+      </>}
 
     </>
   );
