@@ -22,7 +22,7 @@ function showRecomnd() {
 	localStorage.setItem("profile","pro")
 	setTimeout(() => {
 		navigate("/home")
-	}, 5000);
+	}, 6000);
 }
 
 
