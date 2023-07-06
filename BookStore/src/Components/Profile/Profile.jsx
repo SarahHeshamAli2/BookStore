@@ -46,15 +46,11 @@ export default function Profile() {
 							<div className="col-xl-3 col-lg-4 m-b30">
 								<div className="sticky-top">
 									<div className="shop-account">
-										<div className="account-detail text-center">
-											<div className="my-image">
-												<Link to="#">
-													<img src={require("../../images/blank-profile-picture-973460_128.jpg")} alt="" />
-												</Link>
-											</div>
+										<div className="account-detail text-center my-5">
+											
 											<div className="account-title">
 												<div className="">
-													<h2 className="m-b5 "><Link to="#" className='text-decoration-none ss'>{userName}</Link></h2>
+													<h2 className="m-b5 "><Link to="#" className='text-decoration-none ss fs-1'>{userName}</Link></h2>
 												</div>
 											</div>
 										</div>

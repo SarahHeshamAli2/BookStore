@@ -13,7 +13,7 @@ return <>
 <h3 className='text-center m-0 '>Your order has been shipped.. thank you for choosing us</h3>
 <Link to={"/allorder"}>
 
-<button className=' btn btn-outline-primary d-block w-50 m-auto m-0'>all orders</button>
+<button className=' btn btn-primary btnhover d-block w-50 m-auto m-0'>all orders</button>
 
 </Link>
 

@@ -2,12 +2,9 @@ import axios, { all } from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
-<<<<<<< HEAD
 import EmptyCart from '../EmptyCart/EmptyCart';
-
-=======
 import background from '../../images/bg3.jpg';
->>>>>>> 531418b4568f1594aabefb376a24dca7fca80992
+
 export default function AllOrders({currentUser}) {
 const [allOrder, setallOrder] = useState(null)
 const [cartItems, setCartItems] = useState(null)

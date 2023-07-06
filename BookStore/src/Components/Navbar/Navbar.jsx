@@ -79,14 +79,7 @@ export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
             <li className="nav-item">
               <Link className="nav-link " aria-current="false" to="/contact">Contact Us</Link>
             </li>
-        <div className="searchInput">
-        <input id='searchingId' onChange={function(){searching()}} type="text" 
-           aria-label="Text input with dropdown button"
-            placeholder="Search Books Here"
-            className='iin'
-            />
-          <button className="btn seabtn" type="button"><i className="fa-solid fa-magnifying-glass"></i></button>
-        </div>
+     
         <div >
 <h2></h2>
         </div>
