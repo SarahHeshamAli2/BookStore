@@ -22,94 +22,20 @@ export default function Layout({getUserData,currentUser,logOut}) {
     navigate("/home")
 
   }
-  function navigateToBooks() {
-    navigate("/products")
-  }
-  function navigateToCourses() {
-    navigate("/productOfCourses")
 
-  }
-  async function search () {
-  const {data} =  await axios.get(`https://booklandstore.onrender.com/api/v1/products`,{params:{
-    
+
   
-  "authorName" : $("#searchedWord").val(),
-
-
-
-
-
-
-} })
-  
-  // await searchWithProName()
-  if(data.data.length > 0){
-    console.log(data);
-    setauthorName(data.data)
-    
-
-
-  }
-  else {
-await searchWithProName()  }
-  }
- 
-  async function searchWithProName() {
-    const {data} =  await axios.get(`https://booklandstore.onrender.com/api/v1/products`,{params:{
-    
-  
-
-    "ProductName" : $("#searchedWord").val(),
-  
-  
-  
-  
-  
-  
-  } })
-    
-    console.log(data);
-  }
   return <>
     <header className="site-header header style-1">
   
     <div className="header-info-bar row ">
       <div className="container clearfix mo-left  d-flex">
-        <div className="logo-header logo-dark ms-md-5 col-lg-4">
+        <div className="logo-header logo-dark ms-md-5 col-lg-6">
           <Link to="/home"><img src={require('../../images/logo1.png')} alt="logo" /></Link>
         </div>
-        <div className="header-search-nav  rounded-2 m-auto col-lg-7">
-     <div className="input-group search-input  d-flex" >
-     <div className="category">
-     <div className="dropdown ">
-  <button className="btn btn-secondary dropdown-toggle catsize text-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-  Choose Category
-  </button>
-  <ul className="dropdown-menu">
-    <li className='cursor-pointer' onClick={navigateToBooks}><a className="dropdown-item">Web development</a></li>
-    <li className='cursor-pointer' onClick={navigateToCourses}><a className="dropdown-item" >AI&ML</a></li>
-  </ul>
-</div>
-</div>
-<input  id='searchedWord' type="text" 
-           aria-label="Text input with dropdown button"
-            placeholder="Search Books Here"
-            className='iin'
-            />
-          <button onClick={function(){search()}} className="btn seabtn" type="button"><i className="fa-solid fa-magnifying-glass"></i></button>
-         </div>
-     
-     {/* <div className="searchedResult  w-75" >
-      {authorName?.map((auth)=> <><h6>{auth.authorName}</h6>
-      <p>{auth.isCourseOrBook}</p>
-      <img src={auth.imageCover.slice(76)} alt={auth.productName} style={{width: "50px"}} />
-      <p>{auth.price}</p> </>) }
-      
-     </div> */}
-     
-    </div>
+    
     {currentUser ? 
-        <div className="extra-nav  col-lg-1 m-auto ">
+        <div className="extra-nav  col-lg-6 m-auto ">
           <div className="extra-cell">
             <ul className="navbar-nav header-right mx-5">
               <li className="nav-item dropdown profile-dropdown mx-5">
