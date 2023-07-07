@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import ScrollToTop from "react-scroll-to-top";
 
@@ -7,8 +7,11 @@ import { Link, Outlet, useNavigate } from 'react-router-dom'
 import './Layout.css'
 import $ from "jquery"
 import CartProvider from '../Context/CartContext';
+import axios from 'axios';
 
 export default function Layout({getUserData,currentUser,logOut}) {
+
+  const [authorName, setauthorName] = useState(null)
 
 
   let navigate = useNavigate()
@@ -26,10 +29,47 @@ export default function Layout({getUserData,currentUser,logOut}) {
     navigate("/productOfCourses")
 
   }
-  function search () {
-    console.log("eshta");
-  }
+  async function search () {
+  const {data} =  await axios.get(`https://booklandstore.onrender.com/api/v1/products`,{params:{
+    
+  
+  "authorName" : $("#searchedWord").val(),
 
+
+
+
+
+
+} })
+  
+  // await searchWithProName()
+  if(data.data.length > 0){
+    console.log(data);
+    setauthorName(data.data)
+    
+
+
+  }
+  else {
+await searchWithProName()  }
+  }
+ 
+  async function searchWithProName() {
+    const {data} =  await axios.get(`https://booklandstore.onrender.com/api/v1/products`,{params:{
+    
+  
+
+    "ProductName" : $("#searchedWord").val(),
+  
+  
+  
+  
+  
+  
+  } })
+    
+    console.log(data);
+  }
   return <>
     <header className="site-header header style-1">
   
@@ -51,14 +91,21 @@ export default function Layout({getUserData,currentUser,logOut}) {
   </ul>
 </div>
 </div>
-<input type="text" 
+<input  id='searchedWord' type="text" 
            aria-label="Text input with dropdown button"
             placeholder="Search Books Here"
             className='iin'
             />
-          <button className="btn seabtn" type="button"><i className="fa-solid fa-magnifying-glass"></i></button>
+          <button onClick={function(){search()}} className="btn seabtn" type="button"><i className="fa-solid fa-magnifying-glass"></i></button>
          </div>
      
+     {/* <div className="searchedResult  w-75" >
+      {authorName?.map((auth)=> <><h6>{auth.authorName}</h6>
+      <p>{auth.isCourseOrBook}</p>
+      <img src={auth.imageCover.slice(76)} alt={auth.productName} style={{width: "50px"}} />
+      <p>{auth.price}</p> </>) }
+      
+     </div> */}
      
     </div>
     {currentUser ? 

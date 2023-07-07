@@ -6,7 +6,7 @@ import { cartContext } from '../Context/CartContext'
 
 export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
 
-  const {getAllPrducts,searching,searchedArray} = useContext(cartContext)
+  const {getAllPrducts} = useContext(cartContext)
   useEffect(()=>{
     getAllPrducts()
   },[])

@@ -41,6 +41,7 @@ export default function App() {
   function logOut() {
     localStorage.removeItem("userToken")
     setCurrentUser(null)
+    localStorage.removeItem("profile")
 
   }
   useEffect(function(){
