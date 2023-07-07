@@ -9,7 +9,7 @@ export default function ShowCourses() {
   const [comment, setcomment] = useState([])
 
 
-  const { addToCart, load } = useContext(cartContext)
+  const { addToCart, load,showComment,comments ,toggleHide} = useContext(cartContext)
 
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState(null);
@@ -19,7 +19,7 @@ export default function ShowCourses() {
 useEffect(()=>{
 
 getProudctDetails()
-showComment()
+toggleHide()
 
 
 },[])
@@ -63,13 +63,7 @@ showComment()
     }
 
 }
-async function showComment() {
-  const {data} = await axios.get(`https://booklandstore.onrender.com/review/getcomments/`,{
-    "type":"Comment",
-    "productId":"64a2bde69b7e73a82251ce74"
-} )
-console.log(data);
-}
+
 
    return <>
     {productDetails ? <div className="page-content bg-grey">
@@ -183,8 +177,7 @@ console.log(data);
 
                                 <div className="ms-5">
                                   <div className="me-3">
-
-                                    <div className="row">
+                                  <div className="row">
                                       <div className="col-12">
                                         <div className="mb-3">
                                           <textarea className="form-control" id="commentSec" rows="3" placeholder='Write your comment here'></textarea>
@@ -192,8 +185,16 @@ console.log(data);
                                           }
                                           <div className='alert alert-success postedComment' style={{ display: "none" }}>Your comment has been posted</div>
                                         </div>
-                                        <button onClick={showComment}>show comment</button>
+                                        <button id='showCom' onClick={function(){showComment(id)}}>show comment</button>
+                                        <button onClick={toggleHide} id='hideCom'  style={{display:"none"}}>hide comment</button>
                                       </div>
+                                          {comments?.length ==0 ? <div>No comments yet</div> : <>         {comments?.map((comment)=>   <div className="commentSection my-4">
+                                        <h6>{comment.user.name}</h6>
+                                        <p className='fw-bold'>{comment.cooment}</p>
+                                        <p>{comment.createdAt.slice(0,10)}</p>
+                                        <button>Reply</button>
+                                      </div>)}</>  }
+                          
                                     </div>
                                   </div>
                                   <div>

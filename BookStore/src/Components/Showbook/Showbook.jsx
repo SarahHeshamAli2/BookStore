@@ -6,10 +6,9 @@ import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import { cartContext } from '../Context/CartContext';
 import $, { get } from "jquery"
 export default function Showbook() {
-  const [comment, setcomment] = useState([])
 
 
-  const { addToCart, load } = useContext(cartContext)
+  const { addToCart, load ,showComment,comments,toggleHide} = useContext(cartContext)
 
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState(null);
@@ -19,8 +18,8 @@ export default function Showbook() {
 useEffect(()=>{
 
 getProudctDetails()
-
-},[])
+toggleHide()
+},[id])
 
   async function getProudctDetails() {
     try {
@@ -65,15 +64,7 @@ getProudctDetails()
     }
 
 }
-async function showComment() {
-  try {
-    const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments/64a2c5529b7e73a82251ceac/Comment` )
-    console.log(response);
-  } catch (error) {
-   console.log("error",error); 
-  }
-  
-}
+
 
    return <>
     {productDetails ? <div className="page-content bg-grey">
@@ -101,7 +92,7 @@ async function showComment() {
                     <table className="table border book-overview">
                       <thead>
                       <tr>
-                          <th>Auther</th>
+                          <th>Author</th>
                           <td>{productDetails.authorName}</td>
                         </tr>
                         <tr>
@@ -203,8 +194,16 @@ async function showComment() {
                                           }
                                           <div className='alert alert-success postedComment' style={{ display: "none" }}>Your comment has been posted</div>
                                         </div>
-                                        <button onClick={showComment}>show comment</button>
+                                        <button id='showCom' onClick={function(){showComment(id)}}>show comment</button>
+                                        <button onClick={toggleHide} id='hideCom'  style={{display:"none"}}>hide comment</button>
                                       </div>
+
+                                   {comments?.map((comment)=>   <div className="commentSection my-4">
+                                        <h6>{comment.user.name}</h6>
+                                        <p className='fw-bold'>{comment.cooment}</p>
+                                        <p>{comment.createdAt.slice(0,10)}</p>
+                                        <button>Reply</button>
+                                      </div>)}
                                     </div>
                                   </div>
                                   <div>
