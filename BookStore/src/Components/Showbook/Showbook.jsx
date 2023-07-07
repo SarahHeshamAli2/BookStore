@@ -67,7 +67,7 @@ getProudctDetails()
 }
 async function showComment() {
 try {
-  const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments?productId='64a02a6950f17138c8fd582c'` )
+  const response = await axios.get(`https://booklandstore.onrender.com/review/getcomments/64a2c5529b7e73a82251ceac/Comment` )
   console.log(response);
 } catch (error) {
  console.log("error",error); 
