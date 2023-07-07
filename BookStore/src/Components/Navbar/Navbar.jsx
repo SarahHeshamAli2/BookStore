@@ -64,18 +64,18 @@ export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse row" id="navbarSupportedContent">
-          <ul className="navbar-nav m-auto mb-2 mb-lg-0 col-md-10">
-            <li className="nav-item">
+        <div className="collapse navbar-collapse " id="navbarSupportedContent">
+             <ul className='navbar-nav   mb-lg-0  '>
+              <li className="nav-item pt-5">
               <Link className="nav-link active" aria-current="page" to="/home">Home</Link>
             </li>
             
 
-      {currentUser ?        <li className="nav-item dropdown">
+      {currentUser ?        <li className="nav-item dropdown pt-5">
               <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Pages
               </Link>
-              <ul className="dropdown-menu dropdown-body mb-5 ">
+              <ul className="dropdown-menu dropdown-body mb-5 pt-5">
 
 
                 <li><Link className="dropdown-item" to="/profile">My profile</Link></li>
@@ -88,14 +88,13 @@ export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
 
               </ul>
             </li> : ""}
-            <li className="nav-item">
+            <li className="nav-item pt-5">
               <Link className="nav-link " aria-current="false" to="/about">About Us</Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item py-5">
               <Link className="nav-link " aria-current="false" to="/contact">Contact Us</Link>
             </li>
-     
-          <ul>  <div className="header-search-nav  rounded-2 m-auto ">
+                    <div className="header-search-nav  rounded-2 m-auto ms-5">
      <div className="input-group search-input  d-flex" >
      <div className="category">
      <div className="dropdown ">
@@ -111,7 +110,7 @@ export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
 <input  id='searchedWord' type="text" 
            aria-label="Text input with dropdown button"
             placeholder="Search Books Here"
-            className='iin'
+            className='iin py-4 mt-2'
             />
             <Link to={"/searchResult"}>          <button onClick={function(){search()}} className="btn seabtn" type="button"><i className="fa-solid fa-magnifying-glass"></i></button>
 </Link>
@@ -119,10 +118,13 @@ export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
      
 
      
-    </div></ul>
-          </ul>
+    </div>
+          
      
-          <ul className=' d-flex m-auto align-items-center col-md-2'>
+   
+        </ul>
+     
+          <ul className=' d-flex m-auto align-items-center '>
             {
               currentUser == null ?  <>          <button type="button" className="btn btn-primary btnhover" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Login

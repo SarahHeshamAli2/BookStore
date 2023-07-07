@@ -114,7 +114,7 @@ line-height: 40px;
 }
 /*************search***/
 .category select{
-  height: 50px;
+  height: 40px;
   background-color: #f5f5f5;
   border-radius: 6px;
   
@@ -124,18 +124,17 @@ line-height: 40px;
   }
   .header-search-nav .iin{
     height: 40px !important;
-    width:400px !important;
+    width:300px !important;
     background-color: #f5f5f5;
     border: #EAA451 ;
  
   }
-  .header-search-nav input{
-    padding-bottom: 20px;
-  }  
-  
+
   .header-search-nav  .seabtn{
     background-color:#EAA451 !important;
   color: #fff;
+  font-size: medium;
+  padding: 17px;
   }
   .catsize{
 
