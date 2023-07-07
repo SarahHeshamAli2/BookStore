@@ -72,7 +72,7 @@ function showRecomnd() {
 													<span>My Cart</span></Link>
 											</li>
 											<li>
-												<Link to="/shop" className='text-decoration-none'><i className="fa fa-briefcase" aria-hidden="true"></i>
+												<Link to="/SearchResult" className='text-decoration-none'><i className="fa fa-briefcase" aria-hidden="true"></i>
 													<span>Shop</span></Link>
 											</li>
 
