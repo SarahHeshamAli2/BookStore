@@ -13,9 +13,15 @@ export default function CartProvider({children}) {
     const [productName , setProductName]=useState(null);
     const [searchedArray, setsearchedArray] = useState([])
     const [authorName, setauthorName] = useState(null)
+    const [comments, setComments] = useState(null)
 
 
-
+    const navigate =  useNavigate()
+    const [cartItems, setcartItems] = useState(null)
+    const [numberOfCartItems, setNumberOfCartItems] = useState(null)
+    const [totalCartPrice, settotalCartPrice] = useState(null)
+    const [load, setLoad] = useState(false)
+    const [cartId, setCartId] = useState(null)
 
     async function search () {
         const {data} =  await axios.get(`https://booklandstore.onrender.com/api/v1/products`,{params:{
@@ -43,8 +49,29 @@ export default function CartProvider({children}) {
         }
        
 
+async function showComment(id) {
+  try {
+    const {data} = await axios.get(`https://booklandstore.onrender.com/review/getcomments/${id}/Comment` )
+    console.log(data);
+    setComments(data)
+    $("#showCom").hide()
+    $("#hideCom").show()
+    $(".commentSection").show()
+
+  
+  } catch (error) {
+   console.log("error",error); 
+  }
+}
+
+function toggleHide() {
+  $(".commentSection").hide()
+  $("#hideCom").hide()
+  $("#showCom").show()
 
 
+
+}
 
 
         async function searchWithProName() {
@@ -135,12 +162,7 @@ export default function CartProvider({children}) {
         console.log("Error: ",e);
        }
     }
-   const navigate =  useNavigate()
-    const [cartItems, setcartItems] = useState(null)
-    const [numberOfCartItems, setNumberOfCartItems] = useState(null)
-    const [totalCartPrice, settotalCartPrice] = useState(null)
-    const [load, setLoad] = useState(false)
-    const [cartId, setCartId] = useState(null)
+
     async function clearCart () {
 try {
     const response = await axios.delete(`https://booklandstore.onrender.com/api/v1/cart`,{ headers: {
@@ -251,7 +273,7 @@ async function updateCartItemsQuantity(id,count) {
 
 
 }
-return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart,deleteSpecItem,getAllPrducts,allProducts,catgegory,cartId,sortingFromAtoZ,productName,reverse,sortingFromHighToLow,sortingFromLowToHigh,searching,searchedArray,search,authorName}} >
+return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart,deleteSpecItem,getAllPrducts,allProducts,catgegory,cartId,sortingFromAtoZ,productName,reverse,sortingFromHighToLow,sortingFromLowToHigh,searching,searchedArray,search,authorName,showComment,comments,toggleHide}} >
 
 
 {children}
