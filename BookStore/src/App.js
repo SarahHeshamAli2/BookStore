@@ -23,6 +23,7 @@ import ShowCourses from './Components/Showbook/ShowCourses';
 import AllOrders from './Components/AllOrder/AllOrder';
 import OrderDone from './Components/orderDone/orderDone';
 import RecommendBook from './Components/Recommend/RecommendBook';
+import SearchResult from './Components/SearchResult/SearchResult';
 
 export default function App() {
   
@@ -64,6 +65,7 @@ export default function App() {
 
   },
     {path:'about',element:<About/>},
+    {path:'searchResult',element:<CartProvider><SearchResult/></CartProvider>},
     {path:'orderDone',element:<OrderDone/>},
     {path:'contact',element:<Contact/>},
     {path:'cart',element:<CartProvider><Cart /></CartProvider>},

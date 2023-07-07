@@ -7,8 +7,8 @@ import $ from "jquery"
 import CartProvider from '../Context/CartContext';
 import axios from 'axios';
 export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
-  const [authorName, setauthorName] = useState(null)
   let navigate = useNavigate()
+  const {search,authorName} = useContext(cartContext)
 
   const {getAllPrducts} = useContext(cartContext)
   useEffect(()=>{
@@ -25,49 +25,8 @@ export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
   }
 
 
-  async function search () {
-    const {data} =  await axios.get(`https://booklandstore.onrender.com/api/v1/products`,{params:{
-      
-    
-    "authorName" : $("#searchedWord").val(),
-  
-  
-  
-  
-  
-  
-  } })
-    
-    // await searchWithProName()
-    if(data.data.length > 0){
-      console.log(data);
-      setauthorName(data.data)
-      
-  
-  
-    }
-    else {
-  await searchWithProName()  }
-    }
-   
-    async function searchWithProName() {
-      const {data} =  await axios.get(`https://booklandstore.onrender.com/api/v1/products`,{params:{
-      
-    
-  
-      "ProductName" : $("#searchedWord").val(),
-    
-    
-    
-    
-    
-    
-    } })
-      
-      console.log(data);
-    }
+
   return <>
-  
 <div className="modal fade stylish" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog modal-dialog-centered modal-lg">
     <div className="modal-content">
@@ -154,16 +113,11 @@ export default function Navbar({getUserData,currentUser,logOutAndNavToHome}) {
             placeholder="Search Books Here"
             className='iin'
             />
-          <button onClick={function(){search()}} className="btn seabtn" type="button"><i className="fa-solid fa-magnifying-glass"></i></button>
+            <Link to={"/searchResult"}>          <button onClick={function(){search()}} className="btn seabtn" type="button"><i className="fa-solid fa-magnifying-glass"></i></button>
+</Link>
          </div>
      
-     {/* <div className="searchedResult  w-75" >
-      {authorName?.map((auth)=> <><h6>{auth.authorName}</h6>
-      <p>{auth.isCourseOrBook}</p>
-      <img src={auth.imageCover.slice(76)} alt={auth.productName} style={{width: "50px"}} />
-      <p>{auth.price}</p> </>) }
-      
-     </div> */}
+
      
     </div></ul>
           </ul>

@@ -12,6 +12,60 @@ export default function CartProvider({children}) {
     const [catgegory , setCategory]=useState(null);
     const [productName , setProductName]=useState(null);
     const [searchedArray, setsearchedArray] = useState([])
+    const [authorName, setauthorName] = useState(null)
+
+
+
+
+    async function search () {
+        const {data} =  await axios.get(`https://booklandstore.onrender.com/api/v1/products`,{params:{
+          
+        
+        "authorName" : $("#searchedWord").val(),
+      
+      
+      
+      
+      
+      
+      } })
+        
+        if(data.data.length > 0){
+          console.log(data);
+         setauthorName(data.data)
+          
+
+      
+        }
+        else {
+      await searchWithProName()  }
+
+        }
+       
+
+
+
+
+
+        async function searchWithProName() {
+          const {data} =  await axios.get(`https://booklandstore.onrender.com/api/v1/products`,{params:{
+          
+        
+      
+        
+        
+        
+        
+        
+        
+        } })
+          
+          console.log(data);
+          setauthorName(data.data)
+
+        }
+
+
     function sortingFromAtoZ () {
         const trial = allProducts.sort((a, b) => {
             if (a.productName < b.productName) return -1
@@ -196,7 +250,7 @@ async function updateCartItemsQuantity(id,count) {
 
 
 }
-return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart,deleteSpecItem,getAllPrducts,allProducts,catgegory,cartId,sortingFromAtoZ,productName,reverse,sortingFromHighToLow,sortingFromLowToHigh,searching,searchedArray}} >
+return <cartContext.Provider value={{addToCart,getCartProds,numberOfCartItems,cartItems,totalCartPrice,updateCartItemsQuantity,load,clearCart,deleteSpecItem,getAllPrducts,allProducts,catgegory,cartId,sortingFromAtoZ,productName,reverse,sortingFromHighToLow,sortingFromLowToHigh,searching,searchedArray,search,authorName}} >
 
 
 {children}
