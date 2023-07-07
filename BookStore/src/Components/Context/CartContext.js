@@ -52,7 +52,8 @@ export default function CartProvider({children}) {
           
         
       
-        
+          "productName" : $("#searchedWord").val(),
+
         
         
         
